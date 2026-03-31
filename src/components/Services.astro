@@ -2,36 +2,36 @@
 const services = [
   {
     icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
-    tag: "MOST POPULAR",
-    title: "Preventive Care",
-    description: "Annual physicals, health screenings, immunizations, and personalized wellness plans designed to keep you healthy before issues arise.",
+    tag: "MÁS POPULAR",
+    title: "Consulta de Otorrinolaringología",
+    description: "Consulta especializada para niños y adultos. Evaluación del oído, nariz, garganta y estructuras del cuello y cabeza.",
     featured: true,
     cta: true,
   },
   {
     icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>`,
-    title: "Chronic Disease Management",
-    description: "Ongoing care for diabetes, hypertension, thyroid disorders, and other long-term conditions with regular monitoring and medication management.",
+    title: "Nasolaringoscopia",
+    description: "Evaluación endoscópica de cavidad nasal, faringe y laringe para enfermedades que afectan la voz, respiración y deglución.",
   },
   {
     icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>`,
-    title: "Diagnostic Evaluation",
-    description: "Thorough assessment of new symptoms, comprehensive lab work interpretation, and specialist referrals when needed.",
+    title: "Estroboscopia Laríngea",
+    description: "Evaluación altamente especializada de las cuerdas vocales. Estudio de elección para profesionales de la voz.",
   },
   {
     icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
-    title: "Health Risk Assessment",
-    description: "Detailed evaluation of genetic, lifestyle, and environmental risk factors to build a proactive health strategy.",
+    title: "Evaluación de Deglución",
+    description: "Evaluación endoscópica para alteraciones en la deglución de alimentos y líquidos en pacientes con disfagia.",
   },
   {
     icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
-    title: "Acute Care Visits",
-    description: "Same-day or next-day appointments for sudden illness, infections, injuries, and urgent non-emergency concerns.",
+    title: "Procedimientos Ambulatorios",
+    description: "Control de epistaxis, extracción de cuerpos extraños, limpieza de oído y otros procedimientos bajo visión endoscópica.",
   },
   {
     icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
-    title: "Telehealth Consultations",
-    description: "Secure video visits for follow-ups, prescription renewals, and consultations from the comfort of your home.",
+    title: "Cirugía de Laringología",
+    description: "Cirugía de voz, pólipos, nódulos, estenosis laringotraqueales, septoplastia, amigdalectomía y más procedimientos quirúrgicos.",
   },
 ];
 ---
@@ -43,30 +43,28 @@ const services = [
       <div class="services__header-left">
         <p class="services__label">
           <span class="services__label-line"></span>
-          WHAT I OFFER
+          LO QUE OFREZCO
         </p>
         <h2 class="services__title">
-          Comprehensive care<br />
-          <em class="services__title-em">for every stage of life</em>
+          Atención integral<br />
+          <em class="services__title-em">en cada etapa de tu vida</em>
         </h2>
       </div>
       <p class="services__subtitle">
-        From routine checkups to complex condition management — evidence-based medicine delivered with genuine care.
+        Desde consultas de rutina hasta procedimientos especializados — medicina basada en evidencia con atención genuina.
       </p>
     </div>
 
     <div class="services__grid">
 
-      <!-- Col izquierda fila 1: Featured -->
       <div class="services__card services__card--featured">
         <div class="services__card-icon" set:html={services[0].icon}></div>
         <span class="services__card-tag">{services[0].tag}</span>
         <h3 class="services__card-title">{services[0].title}</h3>
         <p class="services__card-desc">{services[0].description}</p>
-        <button class="services__card-btn">Book Now</button>
+        <button class="services__card-btn">Agendar Cita</button>
       </div>
 
-      <!-- Col derecha fila 1+2: Chronic Disease -->
       <div class="services__card services__card--tall">
         <div class="services__card-icon" set:html={services[1].icon}></div>
         <h3 class="services__card-title">{services[1].title}</h3>
@@ -74,7 +72,6 @@ const services = [
         <div class="services__card-line"></div>
       </div>
 
-      <!-- Col izquierda fila 2: subgrid con 2 cards -->
       <div class="services__subgrid">
         <div class="services__card">
           <div class="services__card-icon" set:html={services[2].icon}></div>
@@ -90,7 +87,6 @@ const services = [
         </div>
       </div>
 
-      <!-- Col izquierda fila 3: Acute Care -->
       <div class="services__card services__card--row3-left">
         <div class="services__card-icon" set:html={services[4].icon}></div>
         <h3 class="services__card-title">{services[4].title}</h3>
@@ -98,7 +94,6 @@ const services = [
         <div class="services__card-line"></div>
       </div>
 
-      <!-- Col derecha fila 3: Telehealth -->
       <div class="services__card services__card--row3-right">
         <div class="services__card-icon" set:html={services[5].icon}></div>
         <h3 class="services__card-title">{services[5].title}</h3>
@@ -109,9 +104,9 @@ const services = [
     </div>
 
     <p class="services__footer">
-      Not sure which service fits your needs?{" "}
-      <a href="#appointment" class="services__footer-link">Book a consultation</a>
-      {" "}and we will guide you.
+      ¿No sabes qué servicio necesitas?{" "}
+      <a href="#appointment" class="services__footer-link">Agenda una consulta</a>
+      {" "}y te orientamos.
     </p>
 
   </div>
@@ -120,7 +115,7 @@ const services = [
 <style>
   .services {
     background: #eaf4f8;
-    padding: 7rem 2.5rem;
+    padding: 8rem 2.5rem;
     border-top: 1px solid rgba(212, 175, 55, 0.4);
   }
 
@@ -129,7 +124,7 @@ const services = [
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 3.5rem;
+    gap: 4rem;
   }
 
   .services__header {
@@ -142,7 +137,7 @@ const services = [
   .services__header-left {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
   }
 
   .services__label {
@@ -150,7 +145,7 @@ const services = [
     align-items: center;
     gap: 0.8rem;
     font-family: 'Georgia', serif;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     letter-spacing: 0.12em;
     color: #c07a50;
     font-weight: 600;
@@ -166,7 +161,7 @@ const services = [
 
   .services__title {
     font-family: 'Georgia', serif;
-    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
     font-weight: 700;
     color: #1a2f3a;
     line-height: 1.15;
@@ -176,20 +171,19 @@ const services = [
   .services__title-em {
     font-style: italic;
     font-weight: 400;
-    color: #4AADBC;
+    color: #1a6faa;
   }
 
   .services__subtitle {
     font-family: 'Georgia', serif;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #4a6070;
     line-height: 1.7;
-    max-width: 280px;
+    max-width: 300px;
     text-align: right;
     margin: 0;
   }
 
-  /* ── Grid principal ── */
   .services__grid {
     display: grid;
     grid-template-columns: 1.8fr 1fr;
@@ -225,26 +219,25 @@ const services = [
     grid-row: 3;
   }
 
-  /* ── Cards ── */
   .services__card {
     background: white;
     border-radius: 16px;
-    padding: 2rem;
+    padding: 2.2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
     border: 1px solid #e0ecf2;
     transition: box-shadow 0.2s ease;
   }
 
   .services__card:hover {
-    box-shadow: 0 8px 30px rgba(74,173,188,0.1);
+    box-shadow: 0 8px 30px rgba(26,111,170,0.1);
   }
 
   .services__card--featured {
-    background: #5a9faf;
+    background: #1a6faa;
     border-color: transparent;
-    padding: 2.5rem;
+    padding: 2.8rem;
   }
 
   .services__card--featured .services__card-title,
@@ -253,14 +246,14 @@ const services = [
   }
 
   .services__card-icon {
-    width: 40px;
-    height: 40px;
-    background: rgba(74,173,188,0.12);
+    width: 44px;
+    height: 44px;
+    background: rgba(26,111,170,0.1);
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #4AADBC;
+    color: #1a6faa;
   }
 
   .services__card--featured .services__card-icon {
@@ -270,18 +263,18 @@ const services = [
 
   .services__card-tag {
     font-family: 'Georgia', serif;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     letter-spacing: 0.1em;
     color: rgba(255,255,255,0.9);
     background: rgba(255,255,255,0.15);
     border-radius: 20px;
-    padding: 3px 10px;
+    padding: 4px 12px;
     width: fit-content;
   }
 
   .services__card-title {
     font-family: 'Georgia', serif;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #1a2f3a;
     margin: 0;
@@ -290,7 +283,7 @@ const services = [
 
   .services__card-desc {
     font-family: 'Georgia', serif;
-    font-size: 0.85rem;
+    font-size: 0.92rem;
     color: #4a6070;
     line-height: 1.7;
     margin: 0;
@@ -299,12 +292,13 @@ const services = [
 
   .services__card-btn {
     background: white;
-    color: #2c4a5a;
+    color: #1a6faa;
     border: none;
     border-radius: 20px;
-    padding: 0.6rem 1.4rem;
+    padding: 0.7rem 1.6rem;
     font-family: 'Georgia', serif;
-    font-size: 0.82rem;
+    font-size: 0.88rem;
+    font-weight: 600;
     cursor: pointer;
     width: fit-content;
     margin-top: 0.5rem;
@@ -317,22 +311,28 @@ const services = [
   }
 
   .services__card-line {
-    width: 24px;
+    width: 40px;
     height: 2px;
-    background: #d0e8f0;
+    background: linear-gradient(
+      to right
+      ,
+      transparent 0%,
+      rgba(212, 175, 55, 0.6) 50%,
+      transparent 100%
+    );
     margin-top: 0.3rem;
   }
 
   .services__footer {
     text-align: center;
     font-family: 'Georgia', serif;
-    font-size: 0.88rem;
+    font-size: 0.95rem;
     color: #4a6070;
     margin: 0;
   }
 
   .services__footer-link {
-    color: #4AADBC;
+    color: #1a6faa;
     font-weight: 600;
     text-decoration: underline;
     text-underline-offset: 3px;
