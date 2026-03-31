@@ -1,0 +1,281 @@
+---
+const stats = [
+  { value: "4,800+", label: "PATIENTS TREATED" },
+  { value: "15 Yrs", label: "EXPERIENCE" },
+  { value: "98%", label: "SATISFACTION" },
+];
+---
+
+<section class="hero">
+  <div class="hero__bg">
+    <img
+      src="public/images/HERO.JPG"
+      alt="Dra. Nathalia Sanchez"
+      class="hero__bg-img"
+    />
+    <div class="hero__overlay"></div>
+  </div>
+
+  <!-- Contenido izquierdo -->
+  <div class="hero__content">
+    <div class="hero__text">
+      <h1 class="hero__name">
+        <span class="hero__name-first">Dra. Nathalia</span>
+        <span class="hero__name-last">Sánchez</span>
+      </h1>
+
+      <p class="hero__specialty">
+        <span class="hero__specialty-line"></span>
+        INTERNAL MEDICINE · PRIMARY CARE
+      </p>
+
+      <p class="hero__description">
+        Compassionate, evidence-based care for adults — from routine checkups
+        to complex chronic conditions. Your health, handled with precision.
+      </p>
+
+      <div class="hero__actions">
+        <button class="hero__btn hero__btn--primary">Book Appointment</button>
+        <button class="hero__btn hero__btn--secondary">Learn More</button>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="hero__stats">
+      {stats.map((stat) => (
+        <div class="hero__stat">
+          <span class="hero__stat-value">{stat.value}</span>
+          <span class="hero__stat-label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll">
+    <span class="hero__scroll-text">SCROLL</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: #eaf4f8;
+    overflow: hidden;
+  }
+
+  /* ── Background ── */
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .hero__bg-img {
+    position: absolute;
+    right: 0;
+    top: 55%;
+    transform: translateY(-50%);
+    width: auto;
+    height: 110%;
+    object-fit: unset;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    background: linear-gradient(
+      to right,
+      #eaf4f8 0%,
+      #eaf4f8 60%,        /* ← sólido hasta donde empieza la imagen */
+      rgba(234,244,248,0.95) 65%,
+      rgba(234,244,248,0.7) 70%,
+      rgba(234,244,248,0.2) 78%,
+      transparent 85%
+    );
+  }
+
+  .hero__bg-overlay {
+    display: none;
+  }
+
+  /* ── Content ── */
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 7rem 2.5rem 3rem;
+    max-width: 600px;
+  }
+
+  .hero__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  /* ── Name ── */
+  .hero__name {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+    margin: 0;
+  }
+
+  .hero__name-first {
+    font-family: 'Georgia', serif;
+    font-size: clamp(2.8rem, 5vw, 4rem);
+    font-weight: 700;
+    color: #1a2f3a;
+    letter-spacing: -0.02em;
+  }
+
+  .hero__name-last {
+    font-family: 'Georgia', serif;
+    font-size: clamp(2.8rem, 5vw, 4rem);
+    font-weight: 400;
+    color: #4AADBC;
+    letter-spacing: -0.02em;
+  }
+
+  /* ── Specialty ── */
+  .hero__specialty {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: 'Georgia', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: #c07a50;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .hero__specialty-line {
+    display: inline-block;
+    width: 28px;
+    height: 1.5px;
+    background: #c07a50;
+    flex-shrink: 0;
+  }
+
+  /* ── Description ── */
+  .hero__description {
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    color: #4a6070;
+    line-height: 1.7;
+    max-width: 420px;
+    margin: 0;
+  }
+
+  /* ── Buttons ── */
+  .hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hero__btn {
+    border-radius: 30px;
+    padding: 0.75rem 1.6rem;
+    font-family: 'Georgia', serif;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+  }
+
+  .hero__btn--primary {
+    background: #4AADBC;
+    color: white;
+  }
+
+  .hero__btn--primary:hover {
+    background: #3a9aaa;
+    transform: translateY(-2px);
+  }
+
+  .hero__btn--secondary {
+    background: white;
+    color: #2c4a5a;
+    border: 1.5px solid #d0e0e8;
+  }
+
+  .hero__btn--secondary:hover {
+    border-color: #4AADBC;
+    color: #4AADBC;
+    transform: translateY(-2px);
+  }
+
+  /* ── Stats ── */
+  .hero__stats {
+    display: flex;
+    gap: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #cde0e8;
+  }
+
+  .hero__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .hero__stat-value {
+    font-family: 'Georgia', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1a2f3a;
+    line-height: 1;
+  }
+
+  .hero__stat-label {
+    font-family: 'Georgia', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: #7a9aaa;
+    font-weight: 500;
+  }
+
+  /* ── Scroll indicator ── */
+  .hero__scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 2;
+  }
+
+  .hero__scroll-text {
+    font-family: 'Georgia', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: #7a9aaa;
+  }
+
+  .hero__scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, #4AADBC, transparent);
+    animation: scrollPulse 1.8s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+</style>

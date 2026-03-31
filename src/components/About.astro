@@ -1,0 +1,325 @@
+---
+const stats = [
+  { value: "15+", label: "YEARS OF PRACTICE" },
+  { value: "4,800+", label: "PATIENTS TREATED" },
+  { value: "98%", label: "PATIENT SATISFACTION" },
+  { value: "12", label: "AWARDS & RECOGNITION" },
+];
+
+const credentials = [
+  { type: "MD", institution: "UCSF School of Medicine", year: "2009" },
+  { type: "Residency", institution: "Stanford Internal Medicine", year: "2012" },
+  { type: "Fellowship", institution: "Mayo Clinic Preventive Care", year: "2014" },
+  { type: "Board Certified", institution: "American Board of Internal Medicine", year: "2014" },
+];
+---
+
+<section class="about" id="about">
+    <div class="about__container">
+        <div class="about__left">
+            <p class="about__label">   
+                <span class="about__label-line"></span>
+                ABOUT THE DOCTOR
+            </p>
+            <div class="about__img-wrapper">
+                <div class="about__corner about__corner--tl"></div>
+                <div class="about__corner about__corner--br"></div>
+                <img src="/public/images/ABOUT.JPG" alt="Dra. Nathalia Sanchez" class="about__img" />
+                <div class="about__badge">
+                    <span class="about__badge-dot"></span>
+                    <div>
+                        <p class="about__badge-title">BOARD CERTIFIED</p>
+                        <p class="about__badge-sub">American Board of Internal Medicine</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Derecha: contenido -->
+    <div class="about__right">
+      <!-- elimina el about__label de aquí -->
+      <h2 class="about__title">
+        Dedicated to your<br />
+        <em class="about__title-em">long-term wellbeing</em>
+      </h2>
+
+      <div class="about__divider"></div>
+
+      <p class="about__text">
+        Dr. Sarah Mitchell is a board-certified internist with over 15 years of
+        experience providing comprehensive primary care to adults in San Francisco.
+        She completed her medical training at UCSF and residency at Stanford,
+        followed by a preventive medicine fellowship at the Mayo Clinic.
+      </p>
+
+      <p class="about__text">
+        Her practice focuses on evidence-based, patient-centered care — combining
+        the latest medical research with a genuine commitment to understanding
+        each patient as a whole person. She specializes in managing chronic
+        conditions including diabetes, hypertension, and cardiovascular disease.
+      </p>
+
+      <!-- Stats grid -->
+      <div class="about__stats">
+        {stats.map((stat) => (
+          <div class="about__stat">
+            <span class="about__stat-value">{stat.value}</span>
+            <span class="about__stat-label">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- Credentials -->
+      <div class="about__credentials">
+        <p class="about__cred-title">EDUCATION & CREDENTIALS</p>
+        {credentials.map((cred) => (
+          <div class="about__cred-row">
+            <span class="about__cred-type">{cred.type}</span>
+            <span class="about__cred-institution">{cred.institution}</span>
+            <span class="about__cred-year">{cred.year}</span>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: #fff;
+    padding: 7rem 2.5rem;
+    position: relative;
+    overflow: visible;
+}
+
+  .about__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;       
+    flex-direction: row;
+    gap: 5rem;
+    align-items: flex-start;
+    min-height: 900px;
+  }
+
+  /* ── Imagen ── */
+  .about__left {
+    position: sticky;
+    top: 96px;
+    flex: 0 0 42%;       
+    display: flex;
+    flex-direction: column;
+    gap: 5rem; 
+  }
+
+  .about__img-wrapper {
+    position: relative;
+    border-radius: 16px;
+    overflow: visible;   
+    border: 1px solid #e8f0f4;
+  }
+
+  .about__img {
+    width: 100%;
+    height: 680px;
+    object-fit: cover;
+    object-position: 50% 55%;
+    display: block;
+    border-radius: 16px;  
+  }
+
+  .about__corner {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    z-index: 2;
+  }
+
+  .about__corner--tl {
+    top: -14px;
+    left: -14px;
+    border-top: 3px solid #c07a50;
+    border-left: 3px solid #c07a50;
+    border-radius: 4px 0 0 0;
+  }
+
+  .about__corner--br {
+    bottom: -14px;
+    right: -14px;
+    border-bottom: 3px solid #c07a50;
+    border-right: 3px solid #c07a50;
+    border-radius: 0 0 4px 0;
+  }
+
+  .about__badge {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: white;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .about__badge-dot {
+    width: 8px;
+    height: 8px;
+    background: #4AADBC;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .about__badge-title {
+    font-family: 'Georgia', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: #4AADBC;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .about__badge-sub {
+    font-family: 'Georgia', serif;
+    font-size: 0.75rem;
+    color: #2c4a5a;
+    margin: 0;
+  }
+
+  /* ── Contenido ── */
+  .about__right {
+    flex: 1;          
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 5rem;
+  }
+
+  .about__label {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: 'Georgia', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: #c07a50;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .about__label-line {
+    display: inline-block;
+    width: 28px;
+    height: 1.5px;
+    background: #c07a50;
+  }
+
+  .about__title {
+    font-family: 'Georgia', serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 700;
+    color: #1a2f3a;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .about__title-em {
+    font-style: italic;
+    font-weight: 400;
+    color: #4AADBC;
+  }
+
+  .about__divider {
+    width: 40px;
+    height: 2px;
+    background: #e0ecf0;
+  }
+
+  .about__text {
+    font-family: 'Georgia', serif;
+    font-size: 0.95rem;
+    color: #4a6070;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* ── Stats ── */
+  .about__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .about__stat {
+    background: #f4f9fb;
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .about__stat-value {
+    font-family: 'Georgia', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a2f3a;
+    line-height: 1;
+  }
+
+  .about__stat-label {
+    font-family: 'Georgia', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: #7a9aaa;
+    font-weight: 500;
+  }
+
+  /* ── Credentials ── */
+  .about__credentials {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+  }
+
+  .about__cred-title {
+    font-family: 'Georgia', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: #7a9aaa;
+    font-weight: 600;
+    margin: 0 0 0.4rem;
+  }
+
+  .about__cred-row {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #f0f4f6;
+  }
+
+  .about__cred-type {
+    font-family: 'Georgia', serif;
+    font-size: 0.8rem;
+    color: #4AADBC;
+    font-weight: 600;
+  }
+
+  .about__cred-institution {
+    font-family: 'Georgia', serif;
+    font-size: 0.85rem;
+    color: #2c4a5a;
+  }
+
+  .about__cred-year {
+    font-family: 'Georgia', serif;
+    font-size: 0.8rem;
+    color: #9ab0bb;
+  }
+</style>
