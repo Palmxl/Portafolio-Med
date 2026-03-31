@@ -1,8 +1,8 @@
 ---
 const stats = [
-  { value: "4,800+", label: "PATIENTS TREATED" },
-  { value: "15 Yrs", label: "EXPERIENCE" },
-  { value: "98%", label: "SATISFACTION" },
+  { value: "ORL", label: "ESPECIALISTA" },
+  { value: "2+", label: "ESPECIALIDADES" },
+  { value: "100%", label: "COMPROMISO" },
 ];
 ---
 
@@ -16,7 +16,6 @@ const stats = [
     <div class="hero__overlay"></div>
   </div>
 
-  <!-- Contenido izquierdo -->
   <div class="hero__content">
     <div class="hero__text">
       <h1 class="hero__name">
@@ -26,21 +25,22 @@ const stats = [
 
       <p class="hero__specialty">
         <span class="hero__specialty-line"></span>
-        INTERNAL MEDICINE · PRIMARY CARE
+        OTORRINOLARINGOLOGÍA · VOZ Y DEGLUCIÓN
       </p>
 
       <p class="hero__description">
-        Compassionate, evidence-based care for adults — from routine checkups
-        to complex chronic conditions. Your health, handled with precision.
+        Especialista en otorrinolaringología con subespecialidad en laringología y vía aérea superior. 
+        Atención integral, humanizada y basada en evidencia para niños y adultos.
       </p>
 
       <div class="hero__actions">
-        <button class="hero__btn hero__btn--primary">Book Appointment</button>
-        <button class="hero__btn hero__btn--secondary">Learn More</button>
+        <button class="hero__btn hero__btn--primary">Agendar Cita</button>
+        <a href="/cv.pdf" target="_blank" class="hero__btn hero__btn--secondary">
+          Ver CV
+        </a>
       </div>
     </div>
 
-    <!-- Stats -->
     <div class="hero__stats">
       {stats.map((stat) => (
         <div class="hero__stat">
@@ -51,7 +51,6 @@ const stats = [
     </div>
   </div>
 
-  <!-- Scroll indicator -->
   <div class="hero__scroll">
     <span class="hero__scroll-text">SCROLL</span>
     <div class="hero__scroll-line"></div>
@@ -68,7 +67,6 @@ const stats = [
     overflow: hidden;
   }
 
-  /* ── Background ── */
   .hero__bg {
     position: absolute;
     inset: 0;
@@ -94,7 +92,7 @@ const stats = [
     background: linear-gradient(
       to right,
       #eaf4f8 0%,
-      #eaf4f8 60%,        /* ← sólido hasta donde empieza la imagen */
+      #eaf4f8 60%,
       rgba(234,244,248,0.95) 65%,
       rgba(234,244,248,0.7) 70%,
       rgba(234,244,248,0.2) 78%,
@@ -106,24 +104,22 @@ const stats = [
     display: none;
   }
 
-  /* ── Content ── */
   .hero__content {
     position: relative;
     z-index: 2;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
-    padding: 7rem 2.5rem 3rem;
-    max-width: 600px;
+    gap: 3.5rem;
+    padding: 8.5rem 2.5rem 3rem 28rem;
+    max-width: 980px;
   }
 
   .hero__text {
     display: flex;
     flex-direction: column;
-    gap: 1.4rem;
+    gap: 1.8rem;
   }
 
-  /* ── Name ── */
   .hero__name {
     display: flex;
     flex-direction: column;
@@ -133,7 +129,7 @@ const stats = [
 
   .hero__name-first {
     font-family: 'Georgia', serif;
-    font-size: clamp(2.8rem, 5vw, 4rem);
+    font-size: clamp(3.4rem, 6vw, 5.2rem);
     font-weight: 700;
     color: #1a2f3a;
     letter-spacing: -0.02em;
@@ -141,19 +137,18 @@ const stats = [
 
   .hero__name-last {
     font-family: 'Georgia', serif;
-    font-size: clamp(2.8rem, 5vw, 4rem);
+    font-size: clamp(3.4rem, 6vw, 5.2rem);
     font-weight: 400;
-    color: #4AADBC;
+    color: #1a6faa;
     letter-spacing: -0.02em;
   }
 
-  /* ── Specialty ── */
   .hero__specialty {
     display: flex;
     align-items: center;
     gap: 0.8rem;
     font-family: 'Georgia', serif;
-    font-size: 0.72rem;
+    font-size: 0.9rem;
     letter-spacing: 0.12em;
     color: #c07a50;
     font-weight: 600;
@@ -162,46 +157,44 @@ const stats = [
 
   .hero__specialty-line {
     display: inline-block;
-    width: 28px;
+    width: 30px;
     height: 1.5px;
     background: #c07a50;
     flex-shrink: 0;
   }
 
-  /* ── Description ── */
   .hero__description {
     font-family: 'Georgia', serif;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #4a6070;
     line-height: 1.7;
-    max-width: 420px;
+    max-width: 500px;
     margin: 0;
   }
 
-  /* ── Buttons ── */
   .hero__actions {
     display: flex;
-    gap: 1rem;
+    gap: 1.2rem;
     flex-wrap: wrap;
   }
 
   .hero__btn {
     border-radius: 30px;
-    padding: 0.75rem 1.6rem;
+    padding: 1rem 2.2rem;
     font-family: 'Georgia', serif;
-    font-size: 0.88rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: all 0.2s ease;
     border: none;
   }
 
   .hero__btn--primary {
-    background: #4AADBC;
+    background: #1a6faa;
     color: white;
   }
 
   .hero__btn--primary:hover {
-    background: #3a9aaa;
+    background: #155d8f;
     transform: translateY(-2px);
   }
 
@@ -209,18 +202,20 @@ const stats = [
     background: white;
     color: #2c4a5a;
     border: 1.5px solid #d0e0e8;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
   }
 
   .hero__btn--secondary:hover {
-    border-color: #4AADBC;
-    color: #4AADBC;
+    border-color: #1a6faa;
+    color: #1a6faa;
     transform: translateY(-2px);
   }
 
-  /* ── Stats ── */
   .hero__stats {
     display: flex;
-    gap: 3rem;
+    gap: 3.5rem;
     padding-top: 2rem;
     border-top: 1px solid #cde0e8;
   }
@@ -233,7 +228,7 @@ const stats = [
 
   .hero__stat-value {
     font-family: 'Georgia', serif;
-    font-size: 1.6rem;
+    font-size: 2.2rem;
     font-weight: 700;
     color: #1a2f3a;
     line-height: 1;
@@ -241,13 +236,12 @@ const stats = [
 
   .hero__stat-label {
     font-family: 'Georgia', serif;
-    font-size: 0.6rem;
+    font-size: 0.75rem;
     letter-spacing: 0.12em;
     color: #7a9aaa;
     font-weight: 500;
   }
 
-  /* ── Scroll indicator ── */
   .hero__scroll {
     position: absolute;
     bottom: 2.5rem;
@@ -262,7 +256,7 @@ const stats = [
 
   .hero__scroll-text {
     font-family: 'Georgia', serif;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     letter-spacing: 0.15em;
     color: #7a9aaa;
   }

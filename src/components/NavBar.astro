@@ -1,15 +1,15 @@
 ---
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Appointment", href: "#appointment" },
-  { label: "Contact", href: "#contact" },
+  { label: "Sobre mí", href: "#about" },
+  { label: "Servicios", href: "#services" },
+  { label: "Citas", href: "#appointment" },
+  { label: "Contacto", href: "#contact" },
 ];
 ---
 
 <header class="navbar">
   <div class="navbar__brand">
-    <img src="/images/logo.png" alt="Nathalia Sánchez" class="navbar__logo-img" />
+    <img src="/images/logo2.png" alt="Nathalia Sánchez" class="navbar__logo-img" />
   </div>
 
   <nav class="navbar__nav">
@@ -18,7 +18,7 @@ const navLinks = [
     ))}
   </nav>
 
-  <button class="navbar__cta">Book Appointment</button>
+  <button class="navbar__cta">Agendar Cita</button>
 </header>
 
 <style>
@@ -43,7 +43,7 @@ const navLinks = [
   }
 
   .navbar__logo-img {
-    height: 95px;
+    height: 115px;        /* ← antes 95px */
     width: auto;
     object-fit: contain;
   }
@@ -51,7 +51,7 @@ const navLinks = [
   .navbar__nav {
     display: flex;
     align-items: center;
-    gap: 2.5rem;
+    gap: 3rem;            /* ← antes 2.5rem */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -59,15 +59,31 @@ const navLinks = [
 
   .navbar__link {
     font-family: 'Georgia', serif;
-    font-size: 0.9rem;
+    font-size: 1.05rem;   /* ← antes 0.9rem */
     color: #2c4a5a;
     text-decoration: none;
-    transition: color 0.2s ease;
     letter-spacing: 0.01em;
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  .navbar__link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #1a6faa;
+    transition: width 0.3s ease;
+  }
+
+  .navbar__link:hover::after {
+    width: 100%;
   }
 
   .navbar__link:hover {
-    color: #4AADBC;
+    color: #2c4a5a;
   }
 
   .navbar__cta {
@@ -75,15 +91,16 @@ const navLinks = [
     color: white;
     border: none;
     border-radius: 25px;
-    padding: 0.65rem 1.4rem;
+    padding: 0.85rem 1.8rem;   /* ← antes 0.65rem 1.4rem */
     font-family: 'Georgia', serif;
-    font-size: 0.85rem;
+    font-size: 1rem;           /* ← antes 0.85rem */
     font-weight: 500;
     cursor: pointer;
     transition: background 0.2s ease, transform 0.15s ease;
     letter-spacing: 0.01em;
     margin-right: 5rem;
   }
+
   .navbar__cta:hover {
     background: #3a9aaa;
     transform: translateY(-1px);
