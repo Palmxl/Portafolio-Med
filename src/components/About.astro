@@ -1,65 +1,61 @@
 ---
 const stats = [
-  { value: "15+", label: "YEARS OF PRACTICE" },
-  { value: "4,800+", label: "PATIENTS TREATED" },
-  { value: "98%", label: "PATIENT SATISFACTION" },
-  { value: "12", label: "AWARDS & RECOGNITION" },
+  { value: "2+", label: "ESPECIALIDADES" },
+  { value: "100%", label: "COMPROMISO" },
+  { value: "98%", label: "SATISFACCIÓN" },
+  { value: "12+", label: "RECONOCIMIENTOS" },
 ];
 
 const credentials = [
-  { type: "MD", institution: "UCSF School of Medicine", year: "2009" },
-  { type: "Residency", institution: "Stanford Internal Medicine", year: "2012" },
-  { type: "Fellowship", institution: "Mayo Clinic Preventive Care", year: "2014" },
-  { type: "Board Certified", institution: "American Board of Internal Medicine", year: "2014" },
+  { type: "Médica y Cirujana", institution: "Universidad Militar Nueva Granada", year: "2015" },
+  { type: "ORL", institution: "Especialista en Otorrinolaringología", year: "2019" },
+  { type: "Laringología", institution: "Subespecialidad Vía Aérea Superior", year: "2021" },
+  { type: "Certificada", institution: "Asociación Colombiana de ORL", year: "2021" },
 ];
 ---
 
 <section class="about" id="about">
-    <div class="about__container">
-        <div class="about__left">
-            <p class="about__label">   
-                <span class="about__label-line"></span>
-                ABOUT THE DOCTOR
-            </p>
-            <div class="about__img-wrapper">
-                <div class="about__corner about__corner--tl"></div>
-                <div class="about__corner about__corner--br"></div>
-                <img src="/public/images/ABOUT.JPG" alt="Dra. Nathalia Sanchez" class="about__img" />
-                <div class="about__badge">
-                    <span class="about__badge-dot"></span>
-                    <div>
-                        <p class="about__badge-title">BOARD CERTIFIED</p>
-                        <p class="about__badge-sub">American Board of Internal Medicine</p>
-                    </div>
-                </div>
-            </div>
+  <div class="about__container">
+    <div class="about__left">
+      <p class="about__label">
+        <span class="about__label-line"></span>
+        SOBRE LA DOCTORA
+      </p>
+      <div class="about__img-wrapper">
+        <div class="about__corner about__corner--tl"></div>
+        <div class="about__corner about__corner--br"></div>
+        <img src="/images/ABOUT.JPG" alt="Dra. Nathalia Sánchez" class="about__img" />
+        <div class="about__badge">
+          <span class="about__badge-dot"></span>
+          <div>
+            <p class="about__badge-title">CERTIFICADA</p>
+            <p class="about__badge-sub">Asociación Colombiana de ORL</p>
+          </div>
         </div>
+      </div>
+    </div>
 
-    <!-- Derecha: contenido -->
     <div class="about__right">
-      <!-- elimina el about__label de aquí -->
       <h2 class="about__title">
-        Dedicated to your<br />
-        <em class="about__title-em">long-term wellbeing</em>
+        Dedicada a tu<br />
+        <em class="about__title-em">bienestar a largo plazo</em>
       </h2>
 
       <div class="about__divider"></div>
 
       <p class="about__text">
-        Dr. Sarah Mitchell is a board-certified internist with over 15 years of
-        experience providing comprehensive primary care to adults in San Francisco.
-        She completed her medical training at UCSF and residency at Stanford,
-        followed by a preventive medicine fellowship at the Mayo Clinic.
+        Médica y cirujana especialista en otorrinolaringología con segunda especialidad en 
+        laringología y vía aérea superior, de la Universidad Militar Nueva Granada. 
+        Con gran compromiso en el ejercicio de su profesión y en la educación médica 
+        continuada para brindar a sus pacientes una atención integral y con alto sentido humano.
       </p>
 
       <p class="about__text">
-        Her practice focuses on evidence-based, patient-centered care — combining
-        the latest medical research with a genuine commitment to understanding
-        each patient as a whole person. She specializes in managing chronic
-        conditions including diabetes, hypertension, and cardiovascular disease.
+        Líder en el área de enfermedades que afectan la voz, deglución y respiración. 
+        Actualmente miembro de la Asociación Colombiana de Otorrinolaringología y Cirugía 
+        de cabeza y cuello, docente adjunta y especialista del Hospital Universitario San Ignacio.
       </p>
 
-      <!-- Stats grid -->
       <div class="about__stats">
         {stats.map((stat) => (
           <div class="about__stat">
@@ -69,9 +65,8 @@ const credentials = [
         ))}
       </div>
 
-      <!-- Credentials -->
       <div class="about__credentials">
-        <p class="about__cred-title">EDUCATION & CREDENTIALS</p>
+        <p class="about__cred-title">EDUCACIÓN Y CREDENCIALES</p>
         {credentials.map((cred) => (
           <div class="about__cred-row">
             <span class="about__cred-type">{cred.type}</span>
@@ -80,7 +75,6 @@ const credentials = [
           </div>
         ))}
       </div>
-
     </div>
   </div>
 </section>
@@ -92,42 +86,40 @@ const credentials = [
     position: relative;
     overflow: visible;
     border-top: 1px solid rgba(212, 175, 55, 0.4);
-}
+  }
 
   .about__container {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;       
+    display: flex;
     flex-direction: row;
     gap: 5rem;
     align-items: flex-start;
     min-height: 900px;
   }
 
-  /* ── Imagen ── */
   .about__left {
     position: sticky;
     top: 96px;
-    flex: 0 0 42%;       
+    flex: 0 0 42%;
     display: flex;
     flex-direction: column;
-    gap: 5rem; 
+    gap: 5rem;
   }
 
   .about__img-wrapper {
     position: relative;
     border-radius: 16px;
-    overflow: visible;   
+    overflow: visible;
     border: 1px solid #e8f0f4;
   }
 
-  .about__img {
+.about__img {
     width: 100%;
-    height: 680px;
-    object-fit: cover;
-    object-position: 50% 55%;
+    height: auto;
+    object-fit: unset;
     display: block;
-    border-radius: 16px;  
+    border-radius: 16px;
   }
 
   .about__corner {
@@ -169,7 +161,7 @@ const credentials = [
   .about__badge-dot {
     width: 8px;
     height: 8px;
-    background: #4AADBC;
+    background: #1a6faa;
     border-radius: 50%;
     flex-shrink: 0;
   }
@@ -178,7 +170,7 @@ const credentials = [
     font-family: 'Georgia', serif;
     font-size: 0.6rem;
     letter-spacing: 0.1em;
-    color: #4AADBC;
+    color: #1a6faa;
     font-weight: 600;
     margin: 0;
   }
@@ -190,12 +182,11 @@ const credentials = [
     margin: 0;
   }
 
-  /* ── Contenido ── */
   .about__right {
-    flex: 1;          
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.8rem;
     padding-top: 5rem;
   }
 
@@ -204,7 +195,7 @@ const credentials = [
     align-items: center;
     gap: 0.8rem;
     font-family: 'Georgia', serif;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     letter-spacing: 0.12em;
     color: #c07a50;
     font-weight: 600;
@@ -220,7 +211,7 @@ const credentials = [
 
   .about__title {
     font-family: 'Georgia', serif;
-    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-size: clamp(2.8rem, 3.2vw, 4rem);
     font-weight: 700;
     color: #1a2f3a;
     line-height: 1.2;
@@ -230,24 +221,28 @@ const credentials = [
   .about__title-em {
     font-style: italic;
     font-weight: 400;
-    color: #4AADBC;
+    color: #1a6faa;
   }
 
   .about__divider {
-    width: 40px;
-    height: 2px;
-    background: #e0ecf0;
-  }
-
+    width: 590px;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(212, 175, 55, 0.6) 50%,
+      transparent 100%
+    );
+    align-self: center;    /* ← centra la línea */
+  }  
   .about__text {
     font-family: 'Georgia', serif;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #4a6070;
     line-height: 1.8;
     margin: 0;
   }
 
-  /* ── Stats ── */
   .about__stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -258,7 +253,7 @@ const credentials = [
   .about__stat {
     background: #f4f9fb;
     border-radius: 12px;
-    padding: 1.2rem 1.4rem;
+    padding: 1.4rem 1.6rem;
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
@@ -266,7 +261,7 @@ const credentials = [
 
   .about__stat-value {
     font-family: 'Georgia', serif;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #1a2f3a;
     line-height: 1;
@@ -274,13 +269,12 @@ const credentials = [
 
   .about__stat-label {
     font-family: 'Georgia', serif;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     letter-spacing: 0.1em;
     color: #7a9aaa;
     font-weight: 500;
   }
 
-  /* ── Credentials ── */
   .about__credentials {
     display: flex;
     flex-direction: column;
@@ -290,7 +284,7 @@ const credentials = [
 
   .about__cred-title {
     font-family: 'Georgia', serif;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     letter-spacing: 0.12em;
     color: #7a9aaa;
     font-weight: 600;
@@ -299,28 +293,28 @@ const credentials = [
 
   .about__cred-row {
     display: grid;
-    grid-template-columns: 120px 1fr auto;
+    grid-template-columns: 140px 1fr auto;
     align-items: center;
-    padding: 0.6rem 0;
+    padding: 0.7rem 0;
     border-bottom: 1px solid #f0f4f6;
   }
 
   .about__cred-type {
     font-family: 'Georgia', serif;
-    font-size: 0.8rem;
-    color: #4AADBC;
+    font-size: 0.85rem;
+    color: #1a6faa;
     font-weight: 600;
   }
 
   .about__cred-institution {
     font-family: 'Georgia', serif;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: #2c4a5a;
   }
 
   .about__cred-year {
     font-family: 'Georgia', serif;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: #9ab0bb;
   }
 </style>
