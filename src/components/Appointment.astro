@@ -2,15 +2,15 @@
 const perks = [
   {
     icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
-    text: "Same-week appointments available",
+    text: "Citas disponibles en la misma semana",
   },
   {
     icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
-    text: "Accepts most major insurance plans",
+    text: "Atención para niños y adultos",
   },
   {
     icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
-    text: "Responds within 2 business hours",
+    text: "Respuesta en menos de 2 horas hábiles",
   },
 ];
 ---
@@ -18,41 +18,35 @@ const perks = [
 <section class="appt" id="appointment">
   <div class="appt__container">
 
-    <!-- Label -->
     <p class="appt__label">
       <span class="appt__label-line"></span>
-      SCHEDULE A VISIT
+      AGENDA TU VISITA
       <span class="appt__label-line"></span>
     </p>
 
-    <!-- Título -->
     <h2 class="appt__title">
-      Ready to take charge<br />
-      <em class="appt__title-em">of your health?</em>
+      ¿Listo para tomar el control<br />
+      <em class="appt__title-em">de tu salud?</em>
     </h2>
 
-    <!-- Descripción -->
     <p class="appt__desc">
-      Booking is simple and instant — just tap the button below to start a
-      WhatsApp conversation. No forms, no waiting. Dr. Mitchell or her team
-      will confirm your slot within hours.
+      Agendar es simple e inmediato — escríbenos por WhatsApp y sin formularios 
+      ni esperas. La Dra. Sánchez o su equipo confirmarán tu cita en pocas horas.
     </p>
 
-    <!-- CTAs -->
     <div class="appt__ctas">
-      <a href="https://wa.me/1234567890" target="_blank" class="appt__btn-whatsapp">
+      <a href="https://wa.me/573026399527" target="_blank" class="appt__btn-whatsapp">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
         </svg>
-        Book via WhatsApp
+        Agendar por WhatsApp
       </a>
-      <a href="tel:+14155551234" class="appt__btn-call">
+      <a href="tel:+573026399527" class="appt__btn-call">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.48 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Or call (415) 555-1234
+        O llama al 302-6399527
       </a>
     </div>
 
-    <!-- Perks -->
     <div class="appt__perks">
       {perks.map((perk) => (
         <div class="appt__perk">
@@ -62,25 +56,24 @@ const perks = [
       ))}
     </div>
 
-    <!-- Location card -->
     <div class="appt__location">
       <div class="appt__location-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4AADBC" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a6faa" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
       </div>
       <div class="appt__location-info">
-        <p class="appt__location-title">Clinic Location</p>
+        <p class="appt__location-title">Ubicación del Consultorio</p>
         <p class="appt__location-address">
-          450 Sutter Street, Suite 840<br />
-          San Francisco, CA 94108
+          Edificio Arcos de la 90<br />
+          Calle 90 #14-16 – Chicó, Bogotá
         </p>
         <div class="appt__location-hours">
           <span class="appt__location-hour">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Mon–Fri: 8:00 AM – 5:00 PM
+            Lun–Vie: 8:00 AM – 5:00 PM
           </span>
           <span class="appt__location-hour">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Sat: 9:00 AM – 1:00 PM
+            Sáb: 9:00 AM – 1:00 PM
           </span>
         </div>
       </div>
@@ -92,27 +85,26 @@ const perks = [
 <style>
   .appt {
     background: #fff;
-    padding: 7rem 2.5rem;
+    padding: 8rem 2.5rem;
     border-top: 1px solid rgba(212, 175, 55, 0.4);
   }
 
   .appt__container {
-    max-width: 700px;
+    max-width: 750px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 2.2rem;
     text-align: center;
   }
 
-  /* ── Label ── */
   .appt__label {
     display: flex;
     align-items: center;
     gap: 0.8rem;
     font-family: 'Georgia', serif;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     letter-spacing: 0.14em;
     color: #c07a50;
     font-weight: 600;
@@ -126,10 +118,9 @@ const perks = [
     background: #c07a50;
   }
 
-  /* ── Título ── */
   .appt__title {
     font-family: 'Georgia', serif;
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-size: clamp(2.6rem, 4.5vw, 3.8rem);
     font-weight: 700;
     color: #1a2f3a;
     line-height: 1.15;
@@ -139,20 +130,18 @@ const perks = [
   .appt__title-em {
     font-style: italic;
     font-weight: 400;
-    color: #4AADBC;
+    color: #1a6faa;
   }
 
-  /* ── Desc ── */
   .appt__desc {
     font-family: 'Georgia', serif;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     color: #4a6070;
     line-height: 1.8;
-    max-width: 520px;
+    max-width: 560px;
     margin: 0;
   }
 
-  /* ── CTAs ── */
   .appt__ctas {
     display: flex;
     align-items: center;
@@ -169,9 +158,9 @@ const perks = [
     color: white;
     text-decoration: none;
     border-radius: 30px;
-    padding: 0.85rem 1.8rem;
+    padding: 1rem 2rem;
     font-family: 'Georgia', serif;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     font-weight: 600;
     transition: all 0.2s ease;
     box-shadow: 0 4px 20px rgba(37,211,102,0.3);
@@ -190,18 +179,17 @@ const perks = [
     color: #4a6070;
     text-decoration: none;
     font-family: 'Georgia', serif;
-    font-size: 0.9rem;
+    font-size: 1rem;
     transition: color 0.2s ease;
   }
 
   .appt__btn-call:hover {
-    color: #4AADBC;
+    color: #1a6faa;
   }
 
-  /* ── Perks ── */
   .appt__perks {
     display: flex;
-    gap: 2.5rem;
+    gap: 3rem;
     justify-content: center;
     flex-wrap: wrap;
     padding: 0.5rem 0;
@@ -212,44 +200,43 @@ const perks = [
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    max-width: 140px;
+    max-width: 160px;
   }
 
   .appt__perk-icon {
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
     background: #f0f8fa;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #4AADBC;
+    color: #1a6faa;
   }
 
   .appt__perk-text {
     font-family: 'Georgia', serif;
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     color: #4a6070;
     line-height: 1.5;
     text-align: center;
   }
 
-  /* ── Location ── */
   .appt__location {
     background: #f4f9fb;
     border-radius: 16px;
-    padding: 1.5rem 2rem;
+    padding: 1.8rem 2.2rem;
     display: flex;
     align-items: flex-start;
     gap: 1rem;
     width: 100%;
-    max-width: 500px;
+    max-width: 540px;
     text-align: left;
   }
 
   .appt__location-icon {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     background: #e0f0f5;
     border-radius: 50%;
     display: flex;
@@ -266,7 +253,7 @@ const perks = [
 
   .appt__location-title {
     font-family: 'Georgia', serif;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 700;
     color: #1a2f3a;
     margin: 0;
@@ -274,7 +261,7 @@ const perks = [
 
   .appt__location-address {
     font-family: 'Georgia', serif;
-    font-size: 0.85rem;
+    font-size: 0.92rem;
     color: #4a6070;
     line-height: 1.6;
     margin: 0;
@@ -292,7 +279,7 @@ const perks = [
     align-items: center;
     gap: 0.3rem;
     font-family: 'Georgia', serif;
-    font-size: 0.75rem;
-    color: #4AADBC;
+    font-size: 0.82rem;
+    color: #1a6faa;
   }
 </style>
