@@ -39,7 +39,7 @@ const services = [
 <section class="services" id="services">
   <div class="services__container">
 
-    <div class="services__header">
+    <div class="services__header services__animate services__animate--1">
       <div class="services__header-left">
         <p class="services__label">
           <span class="services__label-line"></span>
@@ -55,7 +55,7 @@ const services = [
       </p>
     </div>
 
-    <div class="services__grid">
+    <div class="services__grid services__animate services__animate--2">
 
       <div class="services__card services__card--featured">
         <div class="services__card-icon" set:html={services[0].icon}></div>
@@ -103,7 +103,7 @@ const services = [
 
     </div>
 
-    <p class="services__footer">
+    <p class="services__footer services__animate services__animate--3">
       ¿No sabes qué servicio necesitas?{" "}
       <a href="#appointment" class="services__footer-link">Agenda una consulta</a>
       {" "}y te orientamos.
@@ -314,8 +314,7 @@ const services = [
     width: 40px;
     height: 2px;
     background: linear-gradient(
-      to right
-      ,
+      to right,
       transparent 0%,
       rgba(212, 175, 55, 0.6) 50%,
       transparent 100%
@@ -337,4 +336,36 @@ const services = [
     text-decoration: underline;
     text-underline-offset: 3px;
   }
+
+  /* ── Animaciones ── */
+  .services__animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .services__animate--1 { transition-delay: 0.1s; }
+  .services__animate--2 { transition-delay: 0.25s; }
+  .services__animate--3 { transition-delay: 0.4s; }
+
+  .services__animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
+
+<script is:inline>
+  const observerServices = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observerServices.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  document.querySelectorAll('.services__animate').forEach(el => observerServices.observe(el));
+</script>

@@ -16,7 +16,7 @@ const credentials = [
 
 <section class="about" id="about">
   <div class="about__container">
-    <div class="about__left">
+    <div class="about__left about__animate about__animate--left">
       <p class="about__label">
         <span class="about__label-line"></span>
         SOBRE LA DOCTORA
@@ -36,27 +36,27 @@ const credentials = [
     </div>
 
     <div class="about__right">
-      <h2 class="about__title">
+      <h2 class="about__title about__animate about__animate--1">
         Dedicada a tu<br />
         <em class="about__title-em">bienestar a largo plazo</em>
       </h2>
 
-      <div class="about__divider"></div>
+      <div class="about__divider about__animate about__animate--2"></div>
 
-      <p class="about__text">
+      <p class="about__text about__animate about__animate--3">
         Médica y cirujana especialista en otorrinolaringología con segunda especialidad en 
         laringología y vía aérea superior, de la Universidad Militar Nueva Granada. 
         Con gran compromiso en el ejercicio de su profesión y en la educación médica 
         continuada para brindar a sus pacientes una atención integral y con alto sentido humano.
       </p>
 
-      <p class="about__text">
+      <p class="about__text about__animate about__animate--4">
         Líder en el área de enfermedades que afectan la voz, deglución y respiración. 
         Actualmente miembro de la Asociación Colombiana de Otorrinolaringología y Cirugía 
         de cabeza y cuello, docente adjunta y especialista del Hospital Universitario San Ignacio.
       </p>
 
-      <div class="about__stats">
+      <div class="about__stats about__animate about__animate--5">
         {stats.map((stat) => (
           <div class="about__stat">
             <span class="about__stat-value">{stat.value}</span>
@@ -65,7 +65,7 @@ const credentials = [
         ))}
       </div>
 
-      <div class="about__credentials">
+      <div class="about__credentials about__animate about__animate--6">
         <p class="about__cred-title">EDUCACIÓN Y CREDENCIALES</p>
         {credentials.map((cred) => (
           <div class="about__cred-row">
@@ -114,7 +114,7 @@ const credentials = [
     border: 1px solid #e8f0f4;
   }
 
-.about__img {
+  .about__img {
     width: 100%;
     height: auto;
     object-fit: unset;
@@ -233,8 +233,9 @@ const credentials = [
       rgba(212, 175, 55, 0.6) 50%,
       transparent 100%
     );
-    align-self: center;    /* ← centra la línea */
-  }  
+    align-self: center;
+  }
+
   .about__text {
     font-family: 'Georgia', serif;
     font-size: 1rem;
@@ -317,4 +318,43 @@ const credentials = [
     font-size: 0.85rem;
     color: #9ab0bb;
   }
+
+  /* ── Animaciones ── */
+  .about__animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .about__animate--left {
+    transform: translateX(-30px);
+  }
+
+  .about__animate--1 { transition-delay: 0.1s; }
+  .about__animate--2 { transition-delay: 0.2s; }
+  .about__animate--3 { transition-delay: 0.3s; }
+  .about__animate--4 { transition-delay: 0.4s; }
+  .about__animate--5 { transition-delay: 0.5s; }
+  .about__animate--6 { transition-delay: 0.6s; }
+
+  .about__animate.visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
 </style>
+
+<script is:inline>
+  const observerAbout = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observerAbout.unobserve(entry.target);
+      }
+    });
+  }, { 
+    threshold: 0,        /* ← antes 0.1, ahora dispara apenas aparece */
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  document.querySelectorAll('.about__animate').forEach(el => observerAbout.observe(el));
+</script>

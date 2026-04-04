@@ -18,7 +18,9 @@ const navLinks = [
     ))}
   </nav>
 
-  <button class="navbar__cta">Agendar Cita</button>
+  <a href="https://wa.me/573026399527" target="_blank" class="navbar__cta">
+    Agendar Cita
+  </a>
 </header>
 
 <style>
@@ -91,14 +93,15 @@ const navLinks = [
     color: white;
     border: none;
     border-radius: 25px;
-    padding: 0.85rem 1.8rem;   /* ← antes 0.65rem 1.4rem */
+    padding: 0.85rem 1.8rem;   
     font-family: 'Georgia', serif;
-    font-size: 1rem;           /* ← antes 0.85rem */
+    font-size: 1rem;           
     font-weight: 500;
     cursor: pointer;
     transition: background 0.2s ease, transform 0.15s ease;
     letter-spacing: 0.01em;
     margin-right: 5rem;
+    text-decoration: none; 
   }
 
   .navbar__cta:hover {

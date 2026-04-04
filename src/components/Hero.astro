@@ -9,7 +9,7 @@ const stats = [
 <section class="hero">
   <div class="hero__bg">
     <img
-      src="public/images/HERO.JPG"
+      src="/images/HERO.JPG"
       alt="Dra. Nathalia Sanchez"
       class="hero__bg-img"
     />
@@ -18,22 +18,22 @@ const stats = [
 
   <div class="hero__content">
     <div class="hero__text">
-      <h1 class="hero__name">
+      <h1 class="hero__name hero__animate hero__animate--1">
         <span class="hero__name-first">Dra. Nathalia</span>
         <span class="hero__name-last">Sánchez</span>
       </h1>
 
-      <p class="hero__specialty">
+      <p class="hero__specialty hero__animate hero__animate--2">
         <span class="hero__specialty-line"></span>
         OTORRINOLARINGOLOGÍA · VOZ Y DEGLUCIÓN
       </p>
 
-      <p class="hero__description">
+      <p class="hero__description hero__animate hero__animate--3">
         Especialista en otorrinolaringología con subespecialidad en laringología y vía aérea superior. 
         Atención integral, humanizada y basada en evidencia para niños y adultos.
       </p>
 
-      <div class="hero__actions">
+      <div class="hero__actions hero__animate hero__animate--4">
         <button class="hero__btn hero__btn--primary">Agendar Cita</button>
         <a href="/cv.pdf" target="_blank" class="hero__btn hero__btn--secondary">
           Ver CV
@@ -41,7 +41,7 @@ const stats = [
       </div>
     </div>
 
-    <div class="hero__stats">
+    <div class="hero__stats hero__animate hero__animate--5">
       {stats.map((stat) => (
         <div class="hero__stat">
           <span class="hero__stat-value">{stat.value}</span>
@@ -272,4 +272,34 @@ const stats = [
     0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
     50% { opacity: 1; transform: scaleY(1); }
   }
+
+  /* ── Animaciones ── */
+  .hero__animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .hero__animate--1 { transition-delay: 0.1s; }
+  .hero__animate--2 { transition-delay: 0.25s; }
+  .hero__animate--3 { transition-delay: 0.4s; }
+  .hero__animate--4 { transition-delay: 0.55s; }
+  .hero__animate--5 { transition-delay: 0.7s; }
+
+  .hero__animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
+
+<script is:inline>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.hero__animate').forEach(el => observer.observe(el));
+</script>
