@@ -341,6 +341,109 @@ const credentials = [
     opacity: 1;
     transform: translateY(0) translateX(0);
   }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .about__container {
+      gap: 3rem;
+      min-height: unset;
+    }
+
+    .about__left {
+      flex: 0 0 45%;
+      gap: 3rem;
+    }
+
+    .about__right {
+      padding-top: 3rem;
+    }
+
+    .about__divider {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about {
+      padding: 5rem 1.8rem;
+    }
+
+    .about__container {
+      flex-direction: column;
+      gap: 3rem;
+      min-height: unset;
+    }
+
+    .about__left {
+      position: relative;
+      top: unset;
+      flex: unset;
+      width: 100%;
+      gap: 2rem;
+    }
+
+    .about__img {
+      max-height: 500px;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .about__right {
+      padding-top: 0;
+      gap: 1.4rem;
+    }
+
+    .about__title {
+      font-size: clamp(2rem, 6vw, 2.8rem);
+    }
+
+    .about__divider {
+      width: 100%;
+    }
+
+    .about__cred-row {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+
+    .about__cred-year {
+      font-size: 0.75rem;
+    }
+
+    .about__corner {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about {
+      padding: 4rem 1.2rem;
+    }
+
+    .about__stats {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+
+    .about__stat {
+      padding: 1rem 1.2rem;
+    }
+
+    .about__stat-value {
+      font-size: 1.6rem;
+    }
+
+    .about__badge {
+      bottom: 1rem;
+      right: 1rem;
+      padding: 0.5rem 0.8rem;
+    }
+
+    .about__badge-sub {
+      font-size: 0.65rem;
+    }
+  }
 </style>
 
 <script is:inline>
@@ -352,7 +455,7 @@ const credentials = [
       }
     });
   }, { 
-    threshold: 0,        /* ← antes 0.1, ahora dispara apenas aparece */
+    threshold: 0,
     rootMargin: '0px 0px -50px 0px'
   });
 

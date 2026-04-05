@@ -21,7 +21,24 @@ const navLinks = [
   <a href="https://wa.me/573026399527" target="_blank" class="navbar__cta">
     Agendar Cita
   </a>
+
+  <!-- Botón hamburguesa -->
+  <button class="navbar__hamburger" aria-label="Menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </header>
+
+<!-- Menú móvil -->
+<div class="navbar__mobile">
+  {navLinks.map((link) => (
+    <a href={link.href} class="navbar__mobile-link">{link.label}</a>
+  ))}
+  <a href="https://wa.me/573026399527" target="_blank" class="navbar__mobile-cta">
+    Agendar Cita
+  </a>
+</div>
 
 <style>
   .navbar {
@@ -45,7 +62,7 @@ const navLinks = [
   }
 
   .navbar__logo-img {
-    height: 115px;        /* ← antes 95px */
+    height: 115px;
     width: auto;
     object-fit: contain;
   }
@@ -53,7 +70,7 @@ const navLinks = [
   .navbar__nav {
     display: flex;
     align-items: center;
-    gap: 3rem;            /* ← antes 2.5rem */
+    gap: 3rem;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -61,7 +78,7 @@ const navLinks = [
 
   .navbar__link {
     font-family: 'Georgia', serif;
-    font-size: 1.05rem;   /* ← antes 0.9rem */
+    font-size: 1.05rem;
     color: #2c4a5a;
     text-decoration: none;
     letter-spacing: 0.01em;
@@ -93,9 +110,9 @@ const navLinks = [
     color: white;
     border: none;
     border-radius: 25px;
-    padding: 0.85rem 1.8rem;   
+    padding: 0.85rem 1.8rem;
     font-family: 'Georgia', serif;
-    font-size: 1rem;           
+    font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
     transition: background 0.2s ease, transform 0.15s ease;
@@ -105,14 +122,132 @@ const navLinks = [
   }
 
   .navbar__cta:hover {
-    background: #3a9aaa;
+    background: #155d8f;
     transform: translateY(-1px);
   }
 
   .navbar--scrolled {
     background: white;
     box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* ── Hamburguesa ── */
+  .navbar__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 101;
+  }
+
+  .navbar__hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: #2c4a5a;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .navbar__hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .navbar__hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar__hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ── Menú móvil ── */
+  .navbar__mobile {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .navbar__mobile.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .navbar__mobile-link {
+    font-family: 'Georgia', serif;
+    font-size: 1.5rem;
+    color: #2c4a5a;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .navbar__mobile-link:hover {
+    color: #1a6faa;
+  }
+
+  .navbar__mobile-cta {
+    background: #1a6faa;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    padding: 0.9rem 2rem;
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    transition: background 0.2s ease;
+  }
+
+  .navbar__mobile-cta:hover {
+    background: #155d8f;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .navbar {
+      padding: 0 2rem;
+    }
+
+    .navbar__nav {
+      display: none;
+    }
+
+    .navbar__cta {
+      display: none;
+    }
+
+    .navbar__hamburger {
+      display: flex;
+    }
+
+    .navbar__mobile {
+      display: flex;
+    }
+
+    .navbar__logo-img {
+      height: 80px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .navbar__logo-img {
+      height: 65px;
+    }
   }
 </style>
 
@@ -124,5 +259,22 @@ const navLinks = [
     } else {
       navbar.classList.remove('navbar--scrolled');
     }
+  });
+
+  const hamburger = document.querySelector('.navbar__hamburger');
+  const mobileMenu = document.querySelector('.navbar__mobile');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('.navbar__mobile-link, .navbar__mobile-cta').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
   });
 </script>
