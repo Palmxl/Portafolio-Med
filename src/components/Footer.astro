@@ -1,18 +1,18 @@
 <footer class="footer">
   <div class="footer__container">
 
-    <div class="footer__brand">
+    <div class="footer__brand footer__animate footer__animate--1">
       <p class="footer__brand-name">© 2026 Dra. Nathalia Sánchez</p>
     </div>
 
-    <nav class="footer__nav">
+    <nav class="footer__nav footer__animate footer__animate--2">
       <a href="#about" class="footer__link">Sobre mí</a>
       <a href="#services" class="footer__link">Servicios</a>
       <a href="#appointment" class="footer__link">Citas</a>
       <a href="#contact" class="footer__link">Contacto</a>
     </nav>
 
-    <div class="footer__social">
+    <div class="footer__social footer__animate footer__animate--3">
       <a href="https://instagram.com/otorrinoylaringe" target="_blank" class="footer__social-btn" aria-label="Instagram">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="2" width="20" height="20" rx="5"/>
@@ -144,4 +144,36 @@
     height: 20px;
     flex-shrink: 0;
   }
+
+  /* ── Animaciones ── */
+  .footer__animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .footer__animate--1 { transition-delay: 0.1s; }
+  .footer__animate--2 { transition-delay: 0.2s; }
+  .footer__animate--3 { transition-delay: 0.3s; }
+
+  .footer__animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
+
+<script is:inline>
+  const observerFooter = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observerFooter.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0,
+    rootMargin: '0px 0px -20px 0px'
+  });
+
+  document.querySelectorAll('.footer__animate').forEach(el => observerFooter.observe(el));
+</script>
