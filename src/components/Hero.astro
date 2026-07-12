@@ -339,10 +339,20 @@ const stats = [
       width: auto;
       max-width: 100%;
       object-fit: contain;
+      -webkit-mask-image:
+        linear-gradient(to right, transparent, #000 16%, #000 84%, transparent),
+        linear-gradient(to bottom, transparent, #000 11%, #000 74%, transparent);
+      -webkit-mask-composite: source-in;
+      mask-image:
+        linear-gradient(to right, transparent, #000 16%, #000 84%, transparent),
+        linear-gradient(to bottom, transparent, #000 11%, #000 74%, transparent);
+      mask-composite: intersect;
     }
 
     .hero__overlay {
-      background: linear-gradient(to bottom, transparent 78%, #eaf4f8 100%);
+      background:
+        linear-gradient(rgba(234,244,248,0.22), rgba(234,244,248,0.22)),
+        linear-gradient(to bottom, transparent 70%, #eaf4f8 96%);
     }
 
     .hero__content {
