@@ -62,7 +62,7 @@ const services = [
         <span class="services__card-tag">{services[0].tag}</span>
         <h3 class="services__card-title">{services[0].title}</h3>
         <p class="services__card-desc">{services[0].description}</p>
-        <button class="services__card-btn">Agendar Cita</button>
+        <a href="#appointment" target="_blank" class="services__card-btn">Agendar Cita</a>
       </div>
 
       <div class="services__card services__card--tall">
@@ -303,6 +303,7 @@ const services = [
     width: fit-content;
     margin-top: 0.5rem;
     transition: all 0.2s ease;
+    text-decoration: none;
   }
 
   .services__card-btn:hover {
