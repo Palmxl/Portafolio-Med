@@ -341,6 +341,66 @@ const credentials = [
     opacity: 1;
     transform: translateY(0) translateX(0);
   }
+
+  /* ── Responsive ── */
+  .about__right {
+    min-width: 0;
+  }
+
+  .about__divider {
+    max-width: 100%;
+  }
+
+  @media (max-width: 899px) {
+    .about {
+      padding: 4.5rem 1.5rem;
+    }
+
+    .about__container {
+      flex-direction: column;
+      gap: 2.5rem;
+      min-height: 0;
+    }
+
+    .about__left {
+      position: static;
+      flex: none;
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      gap: 1.5rem;
+    }
+
+    .about__right {
+      padding-top: 0;
+      width: 100%;
+    }
+
+    .about__title {
+      font-size: clamp(2rem, 6.5vw, 2.8rem);
+    }
+  }
+
+  @media (max-width: 479px) {
+    .about__cred-row {
+      grid-template-columns: 96px 1fr auto;
+      column-gap: 0.6rem;
+    }
+
+    .about__stat {
+      padding: 1.1rem 1.2rem;
+    }
+
+    .about__stat-value {
+      font-size: 1.7rem;
+    }
+  }
+
+  @media (max-width: 399px) {
+    .about__stats {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 
 <script is:inline>

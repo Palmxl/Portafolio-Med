@@ -291,6 +291,60 @@ const stats = [
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* ── Responsive ── */
+  @media (max-width: 1439px) {
+    .hero__content {
+      padding-left: 10rem;
+    }
+  }
+
+  @media (max-width: 899px) {
+    .hero__content {
+      padding: 8.5rem 1.5rem 6.5rem;
+      gap: 2.8rem;
+    }
+
+    .hero__name-first,
+    .hero__name-last {
+      font-size: clamp(2.6rem, 7vw, 3.6rem);
+    }
+
+    .hero__stats {
+      flex-wrap: wrap;
+      gap: 1.8rem 2.5rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hero__content {
+      padding-top: 10rem;
+    }
+
+    .hero__name-first,
+    .hero__name-last {
+      font-size: clamp(2.1rem, 9.5vw, 3rem);
+    }
+
+    .hero__specialty {
+      font-size: 0.78rem;
+    }
+
+    .hero__description {
+      font-size: 1rem;
+    }
+
+    .hero__stat-value {
+      font-size: 1.9rem;
+    }
+  }
+
+  @media (max-width: 374px) {
+    .hero__btn {
+      padding: 0.9rem 1.6rem;
+      font-size: 0.95rem;
+    }
+  }
 </style>
 
 <script is:inline>

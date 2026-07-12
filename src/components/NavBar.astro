@@ -114,6 +114,77 @@ const navLinks = [
     box-shadow: 0 2px 20px rgba(0,0,0,0.06);
     transition: background 0.3s ease, box-shadow 0.3s ease;
   }
+
+  /* ── Responsive ── */
+  @media (max-width: 1599px) {
+    .navbar {
+      padding: 0 3rem;
+    }
+
+    .navbar__cta {
+      margin-right: 0;
+    }
+  }
+
+  @media (max-width: 899px) {
+    .navbar {
+      padding: 0 1.5rem;
+    }
+
+    .navbar__nav {
+      gap: 1.6rem;
+    }
+
+    .navbar__link {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .navbar {
+      flex-wrap: wrap;
+      padding: 0.4rem 1rem 0;
+    }
+
+    .navbar__logo-img {
+      height: 64px;
+    }
+
+    .navbar__nav {
+      position: static;
+      transform: none;
+      order: 3;
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.4rem;
+      padding: 0.2rem 0 0.75rem;
+    }
+
+    .navbar__link {
+      font-size: 0.92rem;
+    }
+
+    .navbar__cta {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 374px) {
+    .navbar__nav {
+      gap: 0.4rem 0.9rem;
+    }
+
+    .navbar__link {
+      font-size: 0.85rem;
+    }
+
+    .navbar__cta {
+      padding: 0.55rem 1rem;
+      font-size: 0.82rem;
+    }
+  }
 </style>
 
 <script is:inline>

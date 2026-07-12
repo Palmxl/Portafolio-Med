@@ -301,6 +301,36 @@ const perks = [
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* ── Responsive ── */
+  @media (max-width: 767px) {
+    .appt {
+      padding: 5rem 1.5rem;
+    }
+
+    .appt__title {
+      font-size: clamp(1.9rem, 8vw, 2.9rem);
+    }
+
+    .appt__title br {
+      display: none;
+    }
+
+    .appt__perks {
+      gap: 1.8rem 2rem;
+    }
+
+    .appt__location {
+      padding: 1.5rem 1.3rem;
+    }
+  }
+
+  @media (max-width: 374px) {
+    .appt__btn-whatsapp {
+      padding: 0.95rem 1.4rem;
+      font-size: 1rem;
+    }
+  }
 </style>
 
 <script is:inline>
