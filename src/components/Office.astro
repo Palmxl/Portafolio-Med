@@ -1,0 +1,343 @@
+---
+const base = "/Portafolio-Med/images/consultorio";
+
+const photos = [
+  {
+    src: `${base}/procedimientos.jpg`,
+    alt: "Sala de procedimientos con silla de exploración y equipo de endoscopia",
+    title: "Sala de procedimientos",
+    tag: "01",
+    variant: "side",
+  },
+  {
+    src: `${base}/sala-examen.jpg`,
+    alt: "Silla de examen otorrinolaringológico frente a monitor de nasolaringoscopia",
+    title: "Equipo de nasolaringoscopia",
+    tag: "02",
+    variant: "main",
+  },
+  {
+    src: `${base}/entrevista.jpg`,
+    alt: "Área de entrevista con escritorio y sillas para pacientes",
+    title: "Área de entrevista",
+    tag: "03",
+    variant: "side",
+  },
+];
+
+const features = [
+  "Tecnología endoscópica de alta definición",
+  "Protocolos estrictos de bioseguridad",
+  "Espacios cómodos y privados",
+];
+---
+
+<section class="office" id="office">
+  <div class="office__container">
+
+    <div class="office__header office__animate">
+      <div>
+        <p class="office__label">
+          <span class="office__label-line"></span>
+          NUESTRO CONSULTORIO
+        </p>
+        <h2 class="office__title">
+          Un espacio pensado<br />
+          <em class="office__title-em">para tu tranquilidad</em>
+        </h2>
+      </div>
+      <ul class="office__features">
+        {features.map((f) => (
+          <li class="office__feature">
+            <span class="office__feature-dot"></span>
+            {f}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="office__gallery">
+      {photos.map((photo, i) => (
+        <button
+          type="button"
+          class={`office__item office__item--${photo.variant} office__animate`}
+          style={`transition-delay: ${0.15 * (i + 1)}s`}
+          data-lightbox="office"
+          data-src={photo.src}
+          data-alt={photo.alt}
+          data-title={photo.title}
+          aria-label={`Ver imagen: ${photo.title}`}
+        >
+          <img src={photo.src} alt={photo.alt} class="office__img" loading="lazy" decoding="async" />
+          <span class="office__overlay">
+            <span class="office__tag">{photo.tag}</span>
+            <span class="office__caption">{photo.title}</span>
+            <span class="office__zoom" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </span>
+          </span>
+        </button>
+      ))}
+    </div>
+  </div>
+
+</section>
+
+<script is:inline>
+  (() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.office__animate').forEach((el) => observer.observe(el));
+  })();
+</script>
+
+<style>
+  .office {
+    background: #f4f9fb;
+    padding: 7rem 2.5rem;
+    position: relative;
+  }
+
+  .office__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  /* ── Header ── */
+  .office__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 3rem;
+  }
+
+  .office__label {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: 'Georgia', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    color: #c07a50;
+    font-weight: 600;
+    margin: 0 0 1.2rem;
+  }
+
+  .office__label-line {
+    display: inline-block;
+    width: 28px;
+    height: 1.5px;
+    background: #c07a50;
+  }
+
+  .office__title {
+    font-family: 'Georgia', serif;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 700;
+    color: #1a2f3a;
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  .office__title-em {
+    font-style: italic;
+    font-weight: 400;
+    color: #1a6faa;
+  }
+
+  .office__features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    max-width: 340px;
+  }
+
+  .office__feature {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Georgia', serif;
+    font-size: 0.95rem;
+    color: #4a6070;
+  }
+
+  .office__feature-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #1a6faa;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 4px rgba(26, 111, 170, 0.12);
+  }
+
+  /* ── Gallery ── */
+  .office__gallery {
+    display: grid;
+    grid-template-columns: 1fr 1.7fr 1fr;
+    gap: 1.25rem;
+    height: 580px;
+  }
+
+  .office__item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    border: none;
+    padding: 0;
+    cursor: zoom-in;
+    background: #dfe9ee;
+    box-shadow: 0 10px 30px rgba(26, 47, 58, 0.08);
+  }
+
+  .office__item--side {
+    margin: 2.5rem 0;
+  }
+
+  .office__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .office__item:hover .office__img,
+  .office__item:focus-visible .office__img {
+    transform: scale(1.06);
+  }
+
+  .office__item:focus-visible {
+    outline: 3px solid #1a6faa;
+    outline-offset: 3px;
+  }
+
+  .office__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 0.3rem;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(26, 47, 58, 0.75) 0%, rgba(26, 47, 58, 0) 45%);
+    text-align: left;
+  }
+
+  .office__tag {
+    font-family: 'Georgia', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: #f0c9a8;
+    font-weight: 600;
+  }
+
+  .office__caption {
+    font-family: 'Georgia', serif;
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .office__zoom {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: #1a6faa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .office__item:hover .office__zoom,
+  .office__item:focus-visible .office__zoom {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* ── Animaciones ── */
+  .office__animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .office__animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 899px) {
+    .office {
+      padding: 4.5rem 1.5rem;
+    }
+
+    .office__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.8rem;
+    }
+
+    .office__title {
+      font-size: clamp(2rem, 6vw, 2.8rem);
+    }
+
+    .office__gallery {
+      grid-template-columns: 1fr 1fr;
+      height: auto;
+    }
+
+    .office__item--main {
+      grid-column: 1 / -1;
+      grid-row: 1;
+      aspect-ratio: 4 / 3;
+    }
+
+    .office__item--side {
+      margin: 0;
+      aspect-ratio: 3 / 4;
+    }
+
+    .office__zoom {
+      opacity: 1;
+      transform: scale(1);
+      width: 34px;
+      height: 34px;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .office__gallery {
+      gap: 0.75rem;
+    }
+
+    .office__overlay {
+      padding: 1rem;
+    }
+
+    .office__caption {
+      font-size: 0.95rem;
+    }
+  }
+</style>

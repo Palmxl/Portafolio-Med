@@ -1,0 +1,350 @@
+---
+const base = "/Portafolio-Med/images/procedimientos";
+
+const photos = [
+  {
+    src: `${base}/servicios-4.jpg`,
+    alt: "Quirófano con microscopio quirúrgico, torre de endoscopia y equipo médico durante una cirugía",
+    title: "Quirófano de alta tecnología",
+    variant: "wide",
+  },
+  {
+    src: `${base}/servicios-2.jpg`,
+    alt: "La doctora opera a través del microscopio quirúrgico mientras la imagen se proyecta en un monitor",
+    title: "Microcirugía laríngea",
+    variant: "tall",
+  },
+  {
+    src: `${base}/servicios-3.jpg`,
+    alt: "La doctora realiza un procedimiento de precisión bajo microscopio",
+    title: "Precisión bajo microscopio",
+    variant: "tall",
+  },
+];
+
+const procedures = [
+  { title: "Microcirugía laríngea", detail: "Pólipos, nódulos y quistes de cuerdas vocales" },
+  { title: "Estenosis laringotraqueal", detail: "Manejo quirúrgico de la vía aérea superior" },
+  { title: "Cirugía nasal", detail: "Septoplastia y procedimientos endoscópicos" },
+  { title: "Amigdalectomía", detail: "En niños y adultos, con recuperación guiada" },
+];
+---
+
+<section class="procedures" id="procedures">
+  <div class="procedures__container">
+
+    <div class="procedures__info procedures__animate">
+      <p class="procedures__label">
+        <span class="procedures__label-line"></span>
+        EN EL QUIRÓFANO
+      </p>
+      <h2 class="procedures__title">
+        Precisión quirúrgica<br />
+        <em class="procedures__title-em">con tecnología de vanguardia</em>
+      </h2>
+      <p class="procedures__text">
+        Cada procedimiento se realiza con microscopio quirúrgico y visualización en alta
+        definición, lo que permite intervenciones mínimamente invasivas, más seguras y
+        con una recuperación más rápida.
+      </p>
+
+      <ol class="procedures__list">
+        {procedures.map((p, i) => (
+          <li class="procedures__item">
+            <span class="procedures__num">{String(i + 1).padStart(2, "0")}</span>
+            <div>
+              <p class="procedures__item-title">{p.title}</p>
+              <p class="procedures__item-detail">{p.detail}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <a href="https://wa.me/573026399527" target="_blank" class="procedures__cta">
+        Consultar un procedimiento
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="procedures__gallery">
+      {photos.map((photo, i) => (
+        <button
+          type="button"
+          class={`procedures__photo procedures__photo--${photo.variant} procedures__animate`}
+          style={`transition-delay: ${0.15 * (i + 1)}s`}
+          data-lightbox="procedures"
+          data-src={photo.src}
+          data-alt={photo.alt}
+          data-title={photo.title}
+          aria-label={`Ver imagen: ${photo.title}`}
+        >
+          <img src={photo.src} alt={photo.alt} class="procedures__img" loading="lazy" decoding="async" />
+          <span class="procedures__caption">{photo.title}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.procedures__animate').forEach((el) => observer.observe(el));
+  })();
+</script>
+
+<style>
+  .procedures {
+    background: #1a2f3a;
+    padding: 7rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .procedures::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26, 111, 170, 0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .procedures__container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 4.5rem;
+    align-items: center;
+  }
+
+  /* ── Texto ── */
+  .procedures__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  .procedures__label {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: 'Georgia', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    color: #e0a27c;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .procedures__label-line {
+    display: inline-block;
+    width: 28px;
+    height: 1.5px;
+    background: #e0a27c;
+  }
+
+  .procedures__title {
+    font-family: 'Georgia', serif;
+    font-size: clamp(2.2rem, 3.4vw, 3.2rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  .procedures__title-em {
+    font-style: italic;
+    font-weight: 400;
+    color: #8cc4e8;
+  }
+
+  .procedures__text {
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    color: #b8cad4;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .procedures__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .procedures__item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: baseline;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .procedures__item:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .procedures__num {
+    font-family: 'Georgia', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: #e0a27c;
+    font-weight: 600;
+  }
+
+  .procedures__item-title {
+    font-family: 'Georgia', serif;
+    font-size: 1.05rem;
+    color: #fff;
+    font-weight: 600;
+    margin: 0 0 0.2rem;
+  }
+
+  .procedures__item-detail {
+    font-family: 'Georgia', serif;
+    font-size: 0.88rem;
+    color: #8fa6b2;
+    margin: 0;
+  }
+
+  .procedures__cta {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #1a6faa;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0.85rem 1.8rem;
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+
+  .procedures__cta:hover {
+    background: #3a9aaa;
+    transform: translateY(-1px);
+  }
+
+  /* ── Galería ── */
+  .procedures__gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .procedures__photo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    border: none;
+    padding: 0;
+    cursor: zoom-in;
+    background: #243e4b;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .procedures__photo--wide {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 10;
+  }
+
+  .procedures__photo--tall {
+    aspect-ratio: 4 / 5;
+  }
+
+  .procedures__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .procedures__photo:hover .procedures__img,
+  .procedures__photo:focus-visible .procedures__img {
+    transform: scale(1.06);
+  }
+
+  .procedures__photo:focus-visible {
+    outline: 3px solid #8cc4e8;
+    outline-offset: 3px;
+  }
+
+  .procedures__caption {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    background: rgba(255, 255, 255, 0.92);
+    color: #1a2f3a;
+    border-radius: 20px;
+    padding: 0.4rem 0.9rem;
+    font-family: 'Georgia', serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  /* ── Animaciones ── */
+  .procedures__animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .procedures__animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 899px) {
+    .procedures {
+      padding: 4.5rem 1.5rem;
+    }
+
+    .procedures__container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .procedures__title {
+      font-size: clamp(2rem, 6vw, 2.8rem);
+    }
+  }
+
+  @media (max-width: 479px) {
+    .procedures__gallery {
+      gap: 0.75rem;
+    }
+
+    .procedures__caption {
+      left: 0.6rem;
+      bottom: 0.6rem;
+      font-size: 0.72rem;
+      padding: 0.35rem 0.7rem;
+    }
+
+    .procedures__cta {
+      align-self: stretch;
+      justify-content: center;
+    }
+  }
+</style>

@@ -6,6 +6,13 @@ const stats = [
   { value: "12+", label: "RECONOCIMIENTOS" },
 ];
 
+const aboutPhotos = [
+  "/Portafolio-Med/images/ABOUT.JPG",
+  "/Portafolio-Med/images/about-2.jpg",
+  "/Portafolio-Med/images/about-3.jpg",
+  "/Portafolio-Med/images/about-4.jpg",
+];
+
 const credentials = [
   { type: "Médica y Cirujana", institution: "Universidad Militar Nueva Granada", year: "2015" },
   { type: "ORL", institution: "Especialista en Otorrinolaringología", year: "2019" },
@@ -24,7 +31,20 @@ const credentials = [
       <div class="about__img-wrapper">
         <div class="about__corner about__corner--tl"></div>
         <div class="about__corner about__corner--br"></div>
-        <img src="/Portafolio-Med/images/ABOUT.JPG" alt="Dra. Nathalia Sánchez" class="about__img" />
+        {aboutPhotos.map((src, i) => (
+          <img
+            src={src}
+            alt="Dra. Nathalia Sánchez"
+            class={`about__img ${i === 0 ? "about__img--active" : "about__img--stacked"}`}
+            loading={i === 0 ? "eager" : "lazy"}
+          />
+        ))}
+        <button type="button" class="about__arrow about__arrow--prev" aria-label="Foto anterior">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" class="about__arrow about__arrow--next" aria-label="Foto siguiente">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
         <div class="about__badge">
           <span class="about__badge-dot"></span>
           <div>
@@ -120,6 +140,51 @@ const credentials = [
     object-fit: unset;
     display: block;
     border-radius: 16px;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .about__img--stacked {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .about__img--active {
+    opacity: 1;
+  }
+
+  .about__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: #1a6faa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .about__arrow:hover {
+    background: #1a6faa;
+    color: #fff;
+  }
+
+  .about__arrow--prev {
+    left: 1rem;
+  }
+
+  .about__arrow--next {
+    right: 1rem;
   }
 
   .about__corner {
@@ -417,4 +482,16 @@ const credentials = [
   });
 
   document.querySelectorAll('.about__animate').forEach(el => observerAbout.observe(el));
+
+  (() => {
+    const imgs = document.querySelectorAll('.about__img');
+    let current = 0;
+    const show = (i) => {
+      imgs[current].classList.remove('about__img--active');
+      current = (i + imgs.length) % imgs.length;
+      imgs[current].classList.add('about__img--active');
+    };
+    document.querySelector('.about__arrow--prev').addEventListener('click', () => show(current - 1));
+    document.querySelector('.about__arrow--next').addEventListener('click', () => show(current + 1));
+  })();
 </script>

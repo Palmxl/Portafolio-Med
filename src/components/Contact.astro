@@ -74,20 +74,54 @@
         </div>
       </div>
 
-      <div class="contact__right contact__animate contact__animate--3">
-        <div class="contact__map">
-          <div class="contact__map-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a6faa" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <div class="contact__location contact__animate contact__animate--4">
+        <button
+          type="button"
+          class="contact__photo contact__photo--building"
+          data-lightbox="location"
+          data-src="/Portafolio-Med/images/ubicacion/edificio.jpg"
+          data-alt="Fachada del Edificio Arcos de la 90 en la Calle 90, Bogotá"
+          data-title="Edificio Arcos de la 90"
+          aria-label="Ver imagen: Edificio Arcos de la 90"
+        >
+          <img src="/Portafolio-Med/images/ubicacion/edificio.jpg" alt="Fachada del Edificio Arcos de la 90 en la Calle 90, Bogotá" class="contact__photo-img" loading="lazy" decoding="async" />
+          <span class="contact__photo-overlay">
+            <span class="contact__photo-tag">NUESTRA SEDE</span>
+            <span class="contact__photo-title">Edificio Arcos de la 90</span>
+            <span class="contact__photo-sub">Calle 90 #14-16 · Chicó, Bogotá</span>
+          </span>
+        </button>
+
+        <div class="contact__location-side">
+          <button
+            type="button"
+            class="contact__photo contact__photo--reception"
+            data-lightbox="location"
+            data-src="/Portafolio-Med/images/ubicacion/recepcion.jpg"
+            data-alt="Sala de espera y recepción del consultorio"
+            data-title="Recepción"
+            aria-label="Ver imagen: Recepción"
+          >
+            <img src="/Portafolio-Med/images/ubicacion/recepcion.jpg" alt="Sala de espera y recepción del consultorio" class="contact__photo-img" loading="lazy" decoding="async" />
+            <span class="contact__photo-chip">Recepción</span>
+          </button>
+
+          <div class="contact__map">
+            <div class="contact__map-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a6faa" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact__map-body">
+              <p class="contact__map-title">Encuéntranos aquí</p>
+              <p class="contact__map-address">
+                Edificio Arcos de la 90<br />
+                Calle 90 #14-16, Bogotá
+              </p>
+            </div>
+            <a href="https://maps.app.goo.gl/gYCiPDBME1izr3Bs6" target="_blank" class="contact__map-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Abrir en Maps
+            </a>
           </div>
-          <p class="contact__map-title">Encuéntranos aquí</p>
-          <p class="contact__map-address">
-            Edificio Arcos de la 90<br />
-            Calle 90 #14-16, Bogotá
-          </p>
-          <a href="https://maps.app.goo.gl/gYCiPDBME1izr3Bs6" target="_blank" class="contact__map-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Abrir en Maps
-          </a>
         </div>
       </div>
 
@@ -177,30 +211,115 @@
   }
 
   .contact__grid {
-    display: grid;
-    grid-template-columns: 1fr 220px;
-    grid-template-rows: auto auto auto;
-    gap: 1.4rem 2rem;
-    align-items: start;
-  }
-
-  .contact__left {
-    grid-column: 1;
-    grid-row: 1;
     display: flex;
     flex-direction: column;
     gap: 1.4rem;
   }
 
-  .contact__right {
-    grid-column: 2;
-    grid-row: 1 / 2;
-    align-self: stretch;
+  .contact__left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  /* ── Ubicación ── */
+  .contact__location {
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 1.4rem;
+    min-height: 460px;
+  }
+
+  .contact__location-side {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+
+  .contact__photo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    border: none;
+    padding: 0;
+    cursor: zoom-in;
+    background: #d6e6ee;
+    box-shadow: 0 10px 30px rgba(26, 47, 58, 0.08);
+  }
+
+  .contact__photo--reception {
+    flex: 1;
+    min-height: 220px;
+  }
+
+  .contact__photo-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .contact__photo:hover .contact__photo-img,
+  .contact__photo:focus-visible .contact__photo-img {
+    transform: scale(1.05);
+  }
+
+  .contact__photo:focus-visible {
+    outline: 3px solid #1a6faa;
+    outline-offset: 3px;
+  }
+
+  .contact__photo-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 0.3rem;
+    padding: 1.8rem;
+    background: linear-gradient(to top, rgba(26, 47, 58, 0.85) 0%, rgba(26, 47, 58, 0) 55%);
+    text-align: left;
+  }
+
+  .contact__photo-tag {
+    font-family: 'Georgia', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: #f0c9a8;
+    font-weight: 600;
+  }
+
+  .contact__photo-title {
+    font-family: 'Georgia', serif;
+    font-size: 1.6rem;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .contact__photo-sub {
+    font-family: 'Georgia', serif;
+    font-size: 0.92rem;
+    color: #d7e4ea;
+  }
+
+  .contact__photo-chip {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    background: rgba(255, 255, 255, 0.92);
+    color: #1a2f3a;
+    border-radius: 20px;
+    padding: 0.4rem 0.9rem;
+    font-family: 'Georgia', serif;
+    font-size: 0.82rem;
+    font-weight: 600;
   }
 
   .contact__alert {
-    grid-column: 1 / 3;
-    grid-row: 2;
     background: #fef8f4;
     border: 1px solid #f0ddd0;
     border-radius: 14px;
@@ -358,21 +477,23 @@
   .contact__map {
     background: white;
     border-radius: 16px;
-    padding: 2rem 1.5rem;
+    padding: 1.3rem 1.5rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    text-align: center;
+    flex-wrap: wrap;
+    gap: 1rem;
     border: 1px solid #e0ecf2;
-    height: 100%;
-    box-sizing: border-box;
+  }
+
+  .contact__map-body {
+    flex: 1;
+    min-width: 150px;
   }
 
   .contact__map-icon {
-    width: 54px;
-    height: 54px;
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
     background: #f0f8fa;
     border-radius: 50%;
     display: flex;
@@ -409,7 +530,6 @@
     font-size: 0.82rem;
     font-weight: 600;
     transition: all 0.2s ease;
-    margin-top: 0.3rem;
   }
 
   .contact__map-btn:hover {
@@ -446,34 +566,6 @@
     font: inherit !important;
   }
 
-  @media (max-width: 1023px) {
-    .contact__grid {
-      grid-template-columns: 1fr;
-      grid-template-rows: none;
-    }
-
-    .contact__left {
-      grid-column: auto;
-      grid-row: auto;
-    }
-
-    .contact__right {
-      grid-column: auto;
-      grid-row: auto;
-      align-self: auto;
-    }
-
-    .contact__map {
-      height: auto;
-      padding: 2rem 1.5rem;
-    }
-
-    .contact__alert {
-      grid-column: auto;
-      grid-row: auto;
-    }
-  }
-
   @media (max-width: 899px) {
     .contact {
       padding: 5rem 1.5rem;
@@ -497,6 +589,25 @@
     .contact__title {
       font-size: clamp(2rem, 6vw, 2.8rem);
     }
+
+    .contact__location {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+
+    .contact__photo--building {
+      aspect-ratio: 4 / 3;
+    }
+
+    .contact__location-side {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact__photo--reception {
+      min-height: 0;
+      aspect-ratio: 4 / 3;
+    }
   }
 
   @media (max-width: 767px) {
@@ -515,6 +626,27 @@
 
     .contact__alert {
       padding: 1.2rem 1.3rem;
+    }
+
+    .contact__location-side {
+      grid-template-columns: 1fr;
+    }
+
+    .contact__photo-overlay {
+      padding: 1.2rem;
+    }
+
+    .contact__photo-title {
+      font-size: 1.25rem;
+    }
+
+    .contact__photo-sub {
+      font-size: 0.82rem;
+    }
+
+    .contact__map-btn {
+      width: 100%;
+      justify-content: center;
     }
   }
 </style>
