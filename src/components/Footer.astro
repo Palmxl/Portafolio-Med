@@ -1,3 +1,9 @@
+---
+const base = import.meta.env.BASE_URL;
+const isHome = Astro.url.pathname.replace(/\/$/, "") === base.replace(/\/$/, "");
+const anchor = (id: string) => (isHome ? `#${id}` : `${base}#${id}`);
+---
+
 <footer class="footer">
   <div class="footer__container">
 
@@ -6,10 +12,11 @@
     </div>
 
     <nav class="footer__nav footer__animate footer__animate--2">
-      <a href="#about" class="footer__link">Sobre mí</a>
-      <a href="#services" class="footer__link">Servicios</a>
-      <a href="#appointment" class="footer__link">Citas</a>
-      <a href="#contact" class="footer__link">Contacto</a>
+      <a href={anchor("about")} class="footer__link">Sobre mí</a>
+      <a href={anchor("services")} class="footer__link">Servicios</a>
+      <a href={anchor("appointment")} class="footer__link">Citas</a>
+      <a href={anchor("contact")} class="footer__link">Contacto</a>
+      <a href={`${base}convenios/`} class="footer__link">Convenios</a>
     </nav>
 
     <div class="footer__social footer__animate footer__animate--3">

@@ -7,21 +7,12 @@ const photos = [
     alt: "Sala de procedimientos con silla de exploración y equipo de endoscopia",
     title: "Sala de procedimientos",
     tag: "01",
-    variant: "side",
-  },
-  {
-    src: `${base}/sala-examen.jpg`,
-    alt: "Silla de examen otorrinolaringológico frente a monitor de nasolaringoscopia",
-    title: "Equipo de nasolaringoscopia",
-    tag: "02",
-    variant: "main",
   },
   {
     src: `${base}/entrevista.jpg`,
     alt: "Área de entrevista con escritorio y sillas para pacientes",
     title: "Área de entrevista",
-    tag: "03",
-    variant: "side",
+    tag: "02",
   },
 ];
 
@@ -60,7 +51,7 @@ const features = [
       {photos.map((photo, i) => (
         <button
           type="button"
-          class={`office__item office__item--${photo.variant} office__animate`}
+          class="office__item office__animate"
           style={`transition-delay: ${0.15 * (i + 1)}s`}
           data-lightbox="office"
           data-src={photo.src}
@@ -108,17 +99,17 @@ const features = [
   .office__container {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 3.5rem;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 4.5rem;
+    align-items: center;
   }
 
   /* ── Header ── */
   .office__header {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 3rem;
+    flex-direction: column;
+    gap: 2.2rem;
   }
 
   .office__label {
@@ -186,9 +177,9 @@ const features = [
   /* ── Gallery ── */
   .office__gallery {
     display: grid;
-    grid-template-columns: 1fr 1.7fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 1.25rem;
-    height: 580px;
+    align-items: start;
   }
 
   .office__item {
@@ -200,10 +191,12 @@ const features = [
     cursor: zoom-in;
     background: #dfe9ee;
     box-shadow: 0 10px 30px rgba(26, 47, 58, 0.08);
+    aspect-ratio: 3 / 4;
   }
 
-  .office__item--side {
-    margin: 2.5rem 0;
+  /* Fotos escalonadas: la segunda un poco más abajo */
+  .office__item:nth-child(2) {
+    margin-top: 4rem;
   }
 
   .office__img {
@@ -293,9 +286,12 @@ const features = [
       padding: 4.5rem 1.5rem;
     }
 
+    .office__container {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
     .office__header {
-      flex-direction: column;
-      align-items: flex-start;
       gap: 1.8rem;
     }
 
@@ -303,20 +299,8 @@ const features = [
       font-size: clamp(2rem, 6vw, 2.8rem);
     }
 
-    .office__gallery {
-      grid-template-columns: 1fr 1fr;
-      height: auto;
-    }
-
-    .office__item--main {
-      grid-column: 1 / -1;
-      grid-row: 1;
-      aspect-ratio: 4 / 3;
-    }
-
-    .office__item--side {
-      margin: 0;
-      aspect-ratio: 3 / 4;
+    .office__item:nth-child(2) {
+      margin-top: 2rem;
     }
 
     .office__zoom {

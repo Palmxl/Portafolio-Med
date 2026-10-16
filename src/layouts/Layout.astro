@@ -23,6 +23,11 @@ const { title = "Dra. Nathalia Sánchez" } = Astro.props;
   </button>
 
   <style>
+    /* Al llegar a una sección desde otra página (/#about), que el navbar fijo no la tape */
+    :global(section[id]) {
+      scroll-margin-top: 96px;
+    }
+
     .scroll-top {
       position: fixed;
       bottom: 2rem;

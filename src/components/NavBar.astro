@@ -1,21 +1,37 @@
 ---
+const base = import.meta.env.BASE_URL;
+const isHome = Astro.url.pathname.replace(/\/$/, "") === base.replace(/\/$/, "");
+
 const navLinks = [
   { label: "Sobre mí", href: "#about" },
   { label: "Servicios", href: "#services" },
   { label: "Consultorio", href: "#office" },
   { label: "Citas", href: "#appointment" },
   { label: "Contacto", href: "#contact" },
+  { label: "Convenios", href: "convenios/", page: true },
 ];
+
+// En la página principal las anclas van directo (#about); desde otras páginas, a la principal (/Portafolio-Med/#about)
+const linkHref = (link: { href: string; page?: boolean }) =>
+  link.page ? `${base}${link.href}` : isHome ? link.href : `${base}${link.href}`;
+const isCurrent = (link: { href: string; page?: boolean }) =>
+  !!link.page && Astro.url.pathname.replace(/\/$/, "").endsWith(link.href.replace(/\/$/, ""));
 ---
 
 <header class="navbar">
   <div class="navbar__brand">
-    <img src="/Portafolio-Med/images/logo2.png" alt="Nathalia Sánchez" class="navbar__logo-img" />
+    {isHome ? (
+      <img src="/Portafolio-Med/images/8.png" alt="Nathalia Sánchez" class="navbar__logo-img" />
+    ) : (
+      <a href={base} aria-label="Volver al inicio">
+        <img src="/Portafolio-Med/images/8.png" alt="Nathalia Sánchez" class="navbar__logo-img" />
+      </a>
+    )}
   </div>
 
   <nav class="navbar__nav">
     {navLinks.map((link) => (
-      <a href={link.href} class="navbar__link">{link.label}</a>
+      <a href={linkHref(link)} class="navbar__link" aria-current={isCurrent(link) ? "page" : undefined}>{link.label}</a>
     ))}
   </nav>
 
@@ -81,7 +97,8 @@ const navLinks = [
     transition: width 0.3s ease;
   }
 
-  .navbar__link:hover::after {
+  .navbar__link:hover::after,
+  .navbar__link[aria-current="page"]::after {
     width: 100%;
   }
 
