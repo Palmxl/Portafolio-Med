@@ -1,3 +1,7 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
 <section class="contact" id="contact">
   <div class="contact__container">
 
@@ -79,12 +83,12 @@
           type="button"
           class="contact__photo contact__photo--building"
           data-lightbox="location"
-          data-src="/Portafolio-Med/images/ubicacion/edificio.jpg"
+          data-src={`${base}images/ubicacion/edificio.jpg`}
           data-alt="Fachada del Edificio Arcos de la 90 en la Calle 90, Bogotá"
           data-title="Edificio Arcos de la 90"
           aria-label="Ver imagen: Edificio Arcos de la 90"
         >
-          <img src="/Portafolio-Med/images/ubicacion/edificio.jpg" alt="Fachada del Edificio Arcos de la 90 en la Calle 90, Bogotá" class="contact__photo-img" loading="lazy" decoding="async" />
+          <img src={`${base}images/ubicacion/edificio.jpg`} alt="Fachada del Edificio Arcos de la 90 en la Calle 90, Bogotá" class="contact__photo-img" loading="lazy" decoding="async" />
           <span class="contact__photo-overlay">
             <span class="contact__photo-tag">NUESTRA SEDE</span>
             <span class="contact__photo-title">Edificio Arcos de la 90</span>
@@ -97,12 +101,12 @@
             type="button"
             class="contact__photo contact__photo--reception"
             data-lightbox="location"
-            data-src="/Portafolio-Med/images/ubicacion/recepcion.jpg"
+            data-src={`${base}images/ubicacion/recepcion.jpg`}
             data-alt="Sala de espera y recepción del consultorio"
             data-title="Recepción"
             aria-label="Ver imagen: Recepción"
           >
-            <img src="/Portafolio-Med/images/ubicacion/recepcion.jpg" alt="Sala de espera y recepción del consultorio" class="contact__photo-img" loading="lazy" decoding="async" />
+            <img src={`${base}images/ubicacion/recepcion.jpg`} alt="Sala de espera y recepción del consultorio" class="contact__photo-img" loading="lazy" decoding="async" />
             <span class="contact__photo-chip">Recepción</span>
           </button>
 

@@ -11,7 +11,7 @@ const navLinks = [
   { label: "Convenios", href: "convenios/", page: true },
 ];
 
-// En la página principal las anclas van directo (#about); desde otras páginas, a la principal (/Portafolio-Med/#about)
+// En la página principal las anclas van directo (#about); desde otras páginas, a la principal (base + #about)
 const linkHref = (link: { href: string; page?: boolean }) =>
   link.page ? `${base}${link.href}` : isHome ? link.href : `${base}${link.href}`;
 const isCurrent = (link: { href: string; page?: boolean }) =>
@@ -21,10 +21,10 @@ const isCurrent = (link: { href: string; page?: boolean }) =>
 <header class="navbar">
   <div class="navbar__brand">
     {isHome ? (
-      <img src="/Portafolio-Med/images/8.png" alt="Nathalia Sánchez" class="navbar__logo-img" />
+      <img src={`${base}images/8.png`} alt="Nathalia Sánchez" class="navbar__logo-img" />
     ) : (
       <a href={base} aria-label="Volver al inicio">
-        <img src="/Portafolio-Med/images/8.png" alt="Nathalia Sánchez" class="navbar__logo-img" />
+        <img src={`${base}images/8.png`} alt="Nathalia Sánchez" class="navbar__logo-img" />
       </a>
     )}
   </div>

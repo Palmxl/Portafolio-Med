@@ -14,6 +14,7 @@ const insurers = [
 <section class="insurances" id="insurances">
   <div class="insurances__container">
 
+    <div class="insurances__intro">
     <div class="insurances__header insurances__animate">
       <p class="insurances__label">
         <span class="insurances__label-line"></span>
@@ -27,6 +28,25 @@ const insurers = [
         Atiendo pacientes de las siguientes entidades. Al agendar tu cita, indícanos tu aseguradora
         y te confirmamos la cobertura de la consulta o procedimiento.
       </p>
+    </div>
+
+    <figure class="insurances__portrait insurances__animate">
+      <span class="insurances__portrait-glow" aria-hidden="true"></span>
+      <img
+        src={`${base}images/about-3.jpg`}
+        alt="Dra. Nathalia Sánchez, otorrinolaringóloga"
+        class="insurances__portrait-img"
+        loading="eager"
+        decoding="async"
+      />
+      <figcaption class="insurances__chip">
+        <span class="insurances__chip-count">{insurers.length}</span>
+        <span class="insurances__chip-body">
+          <span class="insurances__chip-title">Convenios activos</span>
+          <span class="insurances__chip-sub">Prepagadas y pólizas de salud</span>
+        </span>
+      </figcaption>
+    </figure>
     </div>
 
     <ul class="insurances__grid">
@@ -95,11 +115,98 @@ const insurers = [
   }
 
   /* ── Header ── */
+  .insurances__intro {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
   .insurances__header {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-    max-width: 720px;
+    max-width: 640px;
+  }
+
+  /* ── Retrato en arco ── */
+  .insurances__portrait {
+    position: relative;
+    margin: 0 1.5rem 0 0;
+    justify-self: center;
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .insurances__portrait-glow {
+    position: absolute;
+    width: 115%;
+    aspect-ratio: 1;
+    left: -30%;
+    top: 20%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26, 111, 170, 0.18) 0%, transparent 65%);
+    z-index: 0;
+  }
+
+  .insurances__portrait-img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 50% 15%;
+    border-radius: 999px 999px 18px 18px;
+    box-shadow: 0 25px 50px rgba(26, 47, 58, 0.18);
+  }
+
+  .insurances__chip {
+    position: absolute;
+    z-index: 2;
+    left: -2.5rem;
+    bottom: 2.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: #fff;
+    border-radius: 14px;
+    padding: 0.8rem 1.1rem 0.8rem 0.9rem;
+    box-shadow: 0 12px 30px rgba(26, 47, 58, 0.15);
+  }
+
+  .insurances__chip-count {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #1a6faa;
+    color: #fff;
+    font-family: 'Georgia', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .insurances__chip-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .insurances__chip-title {
+    font-family: 'Georgia', serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #1a2f3a;
+  }
+
+  .insurances__chip-sub {
+    font-family: 'Georgia', serif;
+    font-size: 0.75rem;
+    color: #7a9aaa;
   }
 
   .insurances__label {
@@ -312,6 +419,20 @@ const insurers = [
   }
 
   @media (max-width: 899px) {
+    .insurances__intro {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .insurances__portrait {
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    .insurances__chip {
+      left: -1.5rem;
+    }
+
     .insurances {
       padding: 10rem 1.5rem 4.5rem;
     }

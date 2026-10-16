@@ -1,4 +1,6 @@
 ---
+const base = import.meta.env.BASE_URL;
+
 const stats = [
   { value: "2+", label: "ESPECIALIDADES" },
   { value: "100%", label: "COMPROMISO" },
@@ -7,10 +9,10 @@ const stats = [
 ];
 
 const aboutPhotos = [
-  "/Portafolio-Med/images/ABOUT.JPG",
-  "/Portafolio-Med/images/about-2.jpg",
-  "/Portafolio-Med/images/about-3.jpg",
-  "/Portafolio-Med/images/about-4.jpg",
+  `${base}images/ABOUT.JPG`,
+  `${base}images/about-2.jpg`,
+  `${base}images/about-3.jpg`,
+  `${base}images/about-4.jpg`,
 ];
 
 const credentialGroups = [

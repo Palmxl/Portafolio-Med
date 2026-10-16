@@ -4,14 +4,16 @@
 import { chromium } from 'playwright';
 import ffmpegPath from 'ffmpeg-static';
 import { spawn } from 'node:child_process';
-import { mkdirSync } from 'node:fs';
+import { mkdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(ROOT, 'video');
 const PORT = 4329;
-const URL = `http://127.0.0.1:${PORT}/Portafolio-Med/`;
+// Misma base que astro.config.mjs ('/Portafolio-Med/' en github.io, '/' con dominio propio)
+const BASE = readFileSync(path.join(ROOT, 'astro.config.mjs'), 'utf8').match(/base:\s*['"]([^'"]+)['"]/)?.[1] ?? '/';
+const URL = `http://127.0.0.1:${PORT}${BASE}`;
 const FPS = 30;
 
 const FORMATS = {
