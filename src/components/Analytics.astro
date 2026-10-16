@@ -1,0 +1,198 @@
+---
+// Google Analytics 4 + aviso de cookies (Ley 1581).
+// GA4 solo se carga después de que el visitante acepta.
+const GA_ID = "G-9E8K8LL4MP";
+---
+
+<div class="cookies" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
+  <p class="cookies__text">
+    Usamos cookies de analítica para entender cómo se usa este sitio y mejorar la atención.
+    No recopilamos datos personales.
+  </p>
+  <div class="cookies__actions">
+    <button type="button" class="cookies__btn cookies__btn--ghost" data-consent="denied">Rechazar</button>
+    <button type="button" class="cookies__btn" data-consent="granted">Aceptar</button>
+  </div>
+</div>
+
+<script is:inline define:vars={{ GA_ID }}>
+  (() => {
+    const KEY = 'analytics-consent';
+    let enabled = false;
+
+    const read = () => { try { return localStorage.getItem(KEY); } catch { return null; } };
+    const save = (v) => { try { localStorage.setItem(KEY, v); } catch {} };
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+
+    const loadGA = () => {
+      if (enabled) return;
+      enabled = true;
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+      observeSections();
+    };
+
+    const track = (name, params = {}) => {
+      if (enabled) gtag('event', name, params);
+    };
+
+    // Dónde está el elemento: id de la sección, o "navbar"/"footer"
+    const where = (el) => {
+      const box = el.closest('section, header, footer');
+      if (!box) return 'otro';
+      return box.id || box.className.split(' ')[0] || box.tagName.toLowerCase();
+    };
+
+    // ── Clics en enlaces y fotos ──
+    document.addEventListener('click', (e) => {
+      const photo = e.target.closest('[data-lightbox]');
+      if (photo) {
+        track('ver_foto', { galeria: photo.dataset.lightbox, foto: photo.dataset.title || '' });
+        return;
+      }
+
+      const a = e.target.closest('a[href]');
+      if (!a) return;
+      const href = a.getAttribute('href');
+      const ubicacion = where(a);
+
+      if (href.includes('wa.me')) track('click_whatsapp', { ubicacion });
+      else if (href.startsWith('tel:')) track('click_llamar', { ubicacion });
+      else if (href.includes('maps.app.goo.gl') || href.includes('google.com/maps')) track('click_maps', { ubicacion });
+      else if (href.includes('instagram.com')) track('click_redes', { red: 'instagram', ubicacion });
+      else if (href.includes('facebook.com')) track('click_redes', { red: 'facebook', ubicacion });
+      else if (href.includes('linkedin.com')) track('click_redes', { red: 'linkedin', ubicacion });
+      else if (href.toLowerCase().includes('cv')) track('ver_cv', { ubicacion });
+    });
+
+    // ── Secciones vistas (una vez por visita) ──
+    function observeSections() {
+      const seen = new Set();
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.id;
+          if (entry.isIntersecting && !seen.has(id)) {
+            seen.add(id);
+            track('ver_seccion', { seccion: id });
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      document.querySelectorAll('section[id]').forEach((s) => io.observe(s));
+    }
+
+    // ── Aviso de cookies ──
+    const banner = document.getElementById('cookieBanner');
+    const choice = read();
+
+    if (choice === 'granted') loadGA();
+    else if (choice !== 'denied') {
+      banner.hidden = false;
+      requestAnimationFrame(() => banner.classList.add('is-visible'));
+    }
+
+    banner.querySelectorAll('[data-consent]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const value = btn.dataset.consent;
+        save(value);
+        banner.classList.remove('is-visible');
+        setTimeout(() => { banner.hidden = true; }, 300);
+        if (value === 'granted') loadGA();
+      });
+    });
+  })();
+</script>
+
+<style>
+  .cookies {
+    position: fixed;
+    left: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 300;
+    max-width: 420px;
+    background: #fff;
+    border: 1px solid #e0ecf2;
+    border-radius: 14px;
+    box-shadow: 0 10px 40px rgba(26, 47, 58, 0.15);
+    padding: 1.2rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .cookies[hidden] {
+    display: none;
+  }
+
+  .cookies.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Mientras el aviso está abierto, el botón "volver arriba" no se superpone */
+  :global(body:has(.cookies.is-visible) .scroll-top) {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .cookies__text {
+    font-family: 'Georgia', serif;
+    font-size: 0.85rem;
+    color: #4a6070;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .cookies__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+  }
+
+  .cookies__btn {
+    font-family: 'Georgia', serif;
+    font-size: 0.85rem;
+    border-radius: 20px;
+    padding: 0.55rem 1.3rem;
+    cursor: pointer;
+    border: 1px solid #1a6faa;
+    background: #1a6faa;
+    color: #fff;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .cookies__btn:hover {
+    background: #155d8f;
+  }
+
+  .cookies__btn--ghost {
+    background: transparent;
+    color: #1a6faa;
+  }
+
+  .cookies__btn--ghost:hover {
+    background: #f0f8fa;
+  }
+
+  @media (max-width: 479px) {
+    .cookies {
+      left: 0.75rem;
+      right: 0.75rem;
+      bottom: 0.75rem;
+      max-width: none;
+    }
+
+    .cookies__btn {
+      flex: 1;
+    }
+  }
+</style>

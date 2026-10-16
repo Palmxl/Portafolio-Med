@@ -13,11 +13,27 @@ const aboutPhotos = [
   "/Portafolio-Med/images/about-4.jpg",
 ];
 
-const credentials = [
-  { type: "Médica y Cirujana", institution: "Universidad Militar Nueva Granada", year: "2015" },
-  { type: "ORL", institution: "Especialista en Otorrinolaringología", year: "2019" },
-  { type: "Laringología", institution: "Subespecialidad Vía Aérea Superior", year: "2021" },
-  { type: "Certificada", institution: "Asociación Colombiana de ORL", year: "2021" },
+const credentialGroups = [
+  {
+    institution: "Universidad Militar Nueva Granada",
+    items: [
+      { title: "Médica y Cirujana", year: "2012" },
+      { title: "Especialista en Otorrinolaringología", year: "2020" },
+      { title: "Subespecialista en Laringología y Vía Aérea Superior", year: "2022" },
+    ],
+  },
+  {
+    institution: "Vocology Center",
+    items: [
+      { title: "Lorem ipsum dolor sit amet", year: "0000" },
+    ],
+  },
+  {
+    institution: "Miembro de número",
+    items: [
+      { title: "Asociación Colombiana de Otorrinolaringología, Cirugía de Cabeza y Cuello, Maxilofacial, Plástica y Estética Facial (ACORL)" },
+    ],
+  },
 ];
 ---
 
@@ -87,11 +103,17 @@ const credentials = [
 
       <div class="about__credentials about__animate about__animate--6">
         <p class="about__cred-title">EDUCACIÓN Y CREDENCIALES</p>
-        {credentials.map((cred) => (
-          <div class="about__cred-row">
-            <span class="about__cred-type">{cred.type}</span>
-            <span class="about__cred-institution">{cred.institution}</span>
-            <span class="about__cred-year">{cred.year}</span>
+        {credentialGroups.map((group) => (
+          <div class="about__cred-group">
+            <p class="about__cred-school">{group.institution}</p>
+            <div class="about__cred-items">
+              {group.items.map((cred) => (
+                <div class="about__cred-row">
+                  <span class="about__cred-name">{cred.title}</span>
+                  {cred.year && <span class="about__cred-year">{cred.year}</span>}
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>
@@ -357,31 +379,53 @@ const credentials = [
     margin: 0 0 0.4rem;
   }
 
-  .about__cred-row {
+  .about__cred-group {
     display: grid;
-    grid-template-columns: 140px 1fr auto;
-    align-items: center;
-    padding: 0.7rem 0;
+    grid-template-columns: 190px 1fr;
+    column-gap: 1.5rem;
+    align-items: start;
+    padding: 1.1rem 0;
     border-bottom: 1px solid #f0f4f6;
   }
 
-  .about__cred-type {
-    font-family: 'Georgia', serif;
-    font-size: 0.85rem;
-    color: #1a6faa;
-    font-weight: 600;
+  .about__cred-group:last-child {
+    border-bottom: none;
   }
 
-  .about__cred-institution {
+  .about__cred-school {
+    font-family: 'Georgia', serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #1a6faa;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .about__cred-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .about__cred-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .about__cred-name {
     font-family: 'Georgia', serif;
     font-size: 0.9rem;
-    color: #2c4a5a;
+    color: #1a1a1a;
+    line-height: 1.5;
   }
 
   .about__cred-year {
     font-family: 'Georgia', serif;
     font-size: 0.85rem;
     color: #9ab0bb;
+    flex-shrink: 0;
   }
 
   /* ── Animaciones ── */
@@ -447,9 +491,9 @@ const credentials = [
   }
 
   @media (max-width: 479px) {
-    .about__cred-row {
-      grid-template-columns: 96px 1fr auto;
-      column-gap: 0.6rem;
+    .about__cred-group {
+      grid-template-columns: 1fr;
+      row-gap: 0.6rem;
     }
 
     .about__stat {

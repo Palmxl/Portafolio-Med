@@ -9,11 +9,16 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "video": "astro build && node scripts/record-video.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^7.0.7",
     "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "ffmpeg-static": "^5.3.0",
+    "playwright": "^1.64.0"
   }
 }

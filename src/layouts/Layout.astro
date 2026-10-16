@@ -1,4 +1,6 @@
 ---
+import Analytics from '../components/Analytics.astro';
+
 interface Props {
   title?: string;
 }
@@ -89,6 +91,7 @@ const { title = "Dra. Nathalia Sánchez" } = Astro.props;
   </script>
   <body>
     <slot />
+    <Analytics />
   </body>
   <script is:inline>
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

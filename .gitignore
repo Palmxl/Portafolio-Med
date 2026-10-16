@@ -26,3 +26,5 @@ pnpm-debug.log*
 .claude/
 
 .vscode/
+# videos generados (npm run video)
+video/
