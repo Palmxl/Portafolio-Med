@@ -88,6 +88,12 @@ const anchor = (id: string) => (isHome ? `#${id}` : `${base}#${id}`);
     padding-bottom: 3px;
   }
 
+  .footer__link::before {
+    content: '';
+    position: absolute;
+    inset: -6px -6px;
+  }
+
   .footer__link::after {
     content: '';
     position: absolute;
